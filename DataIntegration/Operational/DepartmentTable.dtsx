@@ -1,0 +1,645 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2023 8:11:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-OLK7CR6"
+  DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
+  DTS:DTSID="{94235E6B-ECAE-4EC2-B53C-67754BD3FB4D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{88BB1C9C-03D8-4BA5-9CCA-D7200590A9D0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Department"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A57EF759-31CB-4301-8FAD-5E11CA5117EF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Department"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Department\DeleteDuplicateValues"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="DeleteDuplicateValues"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Department\DeleteDuplicateValues.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Department\DeleteDuplicateValues.Inputs[Sort Input].Columns[Department]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Department"
+                      lineageId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].Columns[Department]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Department\DeleteDuplicateValues.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Department\DeleteDuplicateValues.Outputs[Sort Output].Columns[Department]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Department\DeleteDuplicateValues.Outputs[Sort Output].Columns[Department]"
+                      name="Department"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Department\LoadFromCSV.Outputs[Flat File Source Output].Columns[Department]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Department\InsertDepartment"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="InsertDepartment"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Department]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Department\InsertDepartment.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input].Columns[Department]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Department"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                      lineageId="Package\Department\DeleteDuplicateValues.Outputs[Sort Output].Columns[Department]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="ui1"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DepartmentName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Department\InsertDepartment.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Department\InsertDepartment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Department\InsertDepartment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Department\InsertDepartment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Department\InsertDepartment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Department\LoadFromCSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="LoadFromCSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Department\LoadFromCSV.Connections[FlatFileConnection]"
+                  connectionManagerID="{440D46F4-5351-4CD9-B497-04EE9516068D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[HRDatasetCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].Columns[Department]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      length="50"
+                      lineageId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].Columns[Department]"
+                      name="Department"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Employee_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MarriedID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MaritalStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GenderID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeptID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PerfScoreID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FromDiversityJobFairID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Salary" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Termd" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PositionID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Position" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Zip" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DOB" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Sex" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MaritalDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CitizenDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="HispanicLatino" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RaceDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateofHire" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateofTermination" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TermReason" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmploymentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RecruitmentSource" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PerformanceScore" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EngagementSurvey" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SpecialProjectsCount" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastPerformanceReview_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DaysLateLast30" />
+                    <externalMetadataColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Absences" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Department\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Department.Paths[Flat File Source Output]"
+              endId="Package\Department\DeleteDuplicateValues.Inputs[Sort Input]"
+              name="Flat File Source Output"
+              startId="Package\Department\LoadFromCSV.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Department.Paths[Sort Output]"
+              endId="Package\Department\InsertDepartment.Inputs[OLE DB Destination Input]"
+              name="Sort Output"
+              startId="Package\Department\DeleteDuplicateValues.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Department"
+          TopLeft="423.571429473101,103.99999990884" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Department">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Department\LoadFromCSV"
+          TopLeft="366.428572208602,81.8235293400432" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Department\DeleteDuplicateValues"
+          TopLeft="347.142857881833,161.352941035038" />
+        <EdgeLayout
+          Id="Package\Department.Paths[Flat File Source Output]"
+          TopLeft="438.585715045217,123.423529340043">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.9294116949953"
+              Start="0,0"
+              End="0,30.4294116949953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4294116949953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Department\InsertDepartment"
+          TopLeft="353.57142932409,249.294117428543" />
+        <EdgeLayout
+          Id="Package\Department.Paths[Sort Output]"
+          TopLeft="436.557143602961,202.952941035038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3411763935044"
+              Start="0,0"
+              End="0,38.8411763935044">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8411763935044" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Department\InsertDepartment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
