@@ -1,0 +1,1441 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2023 6:50:20 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-OLK7CR6"
+  DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
+  DTS:DTSID="{D34DDC20-E5CF-48C3-B371-C47EB745412E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{67DEC409-DB9F-4AB6-BD4F-6E2C04D18D56}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sex"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EA32BB8B-7008-40E7-9CA4-2B0D9965EB4C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sex"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Sex\AddFemale"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="AddFemale"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sex\AddFemale.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\AddFemale.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Sex\AddFemale.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddFemale.Outputs[Derived Column Output].Columns[SexDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Sex\AddFemale.Outputs[Derived Column Output].Columns[SexDescription]"
+                      name="SexDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Female"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Female"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sex\AddFemale.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Sex\AddFemale.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddFemale.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddFemale.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sex\AddFemale.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddFemale.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\AddMale"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="AddMale"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sex\AddMale.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\AddMale.Inputs[Derived Column Input].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      cachedSortKeyPosition="1"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]}," ","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(Sex," ","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\AddMale.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Sex\AddMale.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddMale.Outputs[Derived Column Output].Columns[SexDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Sex\AddMale.Outputs[Derived Column Output].Columns[SexDescription]"
+                      name="SexDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Male"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Male"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sex\AddMale.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Sex\AddMale.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddMale.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddMale.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sex\AddMale.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddMale.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\AddOther"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="AddOther"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sex\AddOther.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\AddOther.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Sex\AddOther.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddOther.Outputs[Derived Column Output].Columns[SexDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Sex\AddOther.Outputs[Derived Column Output].Columns[SexDescription]"
+                      name="SexDescription"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Other"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Other"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sex\AddOther.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Sex\AddOther.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddOther.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddOther.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sex\AddOther.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddOther.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\AddSexDescription"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="AddSexDescription"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\AddSexDescription.Outputs[Female]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Female"
+                  synchronousInputId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]} == "F"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Sex == "F"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sex\AddSexDescription.Outputs[Male]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Male"
+                  synchronousInputId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]} == "M "</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Sex == "M "</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sex\AddSexDescription.Outputs[Other]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Other"
+                  synchronousInputId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Sex\AddSexDescription.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\AddSexDescription.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddSexDescription.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sex\AddSexDescription.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sex\AddSexDescription.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\DeleteDuplicateValues"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="DeleteDuplicateValues"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Sex\DeleteDuplicateValues.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\DeleteDuplicateValues.Inputs[Sort Input].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      lineageId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]"
+                      name="Sex"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\InsertSex"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="InsertSex"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Sex]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sex\InsertSex.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].Columns[SexDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="SexDescription"
+                      externalMetadataColumnId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].ExternalColumns[SexDescription]"
+                      lineageId="Package\Sex\Union All.Outputs[Union All Output 1].Columns[SexDescription]" />
+                    <inputColumn
+                      refId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      externalMetadataColumnId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].ExternalColumns[SexPlaceHolder]"
+                      lineageId="Package\Sex\Union All.Outputs[Union All Output 1].Columns[Sex]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="ui1"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].ExternalColumns[SexPlaceHolder]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="SexPlaceHolder" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input].ExternalColumns[SexDescription]"
+                      dataType="wstr"
+                      length="10"
+                      name="SexDescription" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\InsertSex.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\InsertSex.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sex\InsertSex.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sex\InsertSex.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sex\InsertSex.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\LoadFromCSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="LoadFromCSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Sex\LoadFromCSV.Connections[FlatFileConnection]"
+                  connectionManagerID="{440D46F4-5351-4CD9-B497-04EE9516068D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[HRDatasetCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      length="50"
+                      lineageId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]"
+                      name="Sex"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Employee_Name" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MarriedID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MaritalStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GenderID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeptID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PerfScoreID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FromDiversityJobFairID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Salary" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Termd" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PositionID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Position" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Zip" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DOB" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Sex" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MaritalDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CitizenDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="HispanicLatino" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RaceDesc" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateofHire" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateofTermination" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TermReason" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmploymentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RecruitmentSource" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PerformanceScore" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EngagementSurvey" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SpecialProjectsCount" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastPerformanceReview_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DaysLateLast30" />
+                    <externalMetadataColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Absences" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Sex\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Sex\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\Union All.Inputs[Union All Input 1].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Sex\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sex\Union All.Inputs[Union All Input 1].Columns[SexDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="SexDescription"
+                      lineageId="Package\Sex\AddFemale.Outputs[Derived Column Output].Columns[SexDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Sex\Union All.Outputs[Union All Output 1].Columns[SexDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Sex\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\Union All.Inputs[Union All Input 2].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Sex\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sex\Union All.Inputs[Union All Input 2].Columns[SexDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="SexDescription"
+                      lineageId="Package\Sex\AddMale.Outputs[Derived Column Output].Columns[SexDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Sex\Union All.Outputs[Union All Output 1].Columns[SexDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Sex\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Sex\Union All.Inputs[Union All Input 3].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Sex\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Sex\Union All.Inputs[Union All Input 3].Columns[SexDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="SexDescription"
+                      lineageId="Package\Sex\AddOther.Outputs[Derived Column Output].Columns[SexDescription]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Sex\Union All.Outputs[Union All Output 1].Columns[SexDescription]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Sex\Union All.Inputs[Union All Input 4]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Sex\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Sex\Union All.Outputs[Union All Output 1].Columns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Sex\Union All.Outputs[Union All Output 1].Columns[Sex]"
+                      name="Sex" />
+                    <outputColumn
+                      refId="Package\Sex\Union All.Outputs[Union All Output 1].Columns[SexDescription]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Sex\Union All.Outputs[Union All Output 1].Columns[SexDescription]"
+                      name="SexDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Sex.Paths[Derived Column Output]"
+              endId="Package\Sex\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Sex\AddFemale.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Sex.Paths[Derived Column Output1]"
+              endId="Package\Sex\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Sex\AddMale.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Sex.Paths[Derived Column Output2]"
+              endId="Package\Sex\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\Sex\AddOther.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Sex.Paths[Female]"
+              endId="Package\Sex\AddFemale.Inputs[Derived Column Input]"
+              name="Female"
+              startId="Package\Sex\AddSexDescription.Outputs[Female]" />
+            <path
+              refId="Package\Sex.Paths[Flat File Source Output]"
+              endId="Package\Sex\DeleteDuplicateValues.Inputs[Sort Input]"
+              name="Flat File Source Output"
+              startId="Package\Sex\LoadFromCSV.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Sex.Paths[Male]"
+              endId="Package\Sex\AddMale.Inputs[Derived Column Input]"
+              name="Male"
+              startId="Package\Sex\AddSexDescription.Outputs[Male]" />
+            <path
+              refId="Package\Sex.Paths[Other]"
+              endId="Package\Sex\AddOther.Inputs[Derived Column Input]"
+              name="Other"
+              startId="Package\Sex\AddSexDescription.Outputs[Other]" />
+            <path
+              refId="Package\Sex.Paths[Sort Output]"
+              endId="Package\Sex\AddSexDescription.Inputs[Conditional Split Input]"
+              name="Sort Output"
+              startId="Package\Sex\DeleteDuplicateValues.Outputs[Sort Output]" />
+            <path
+              refId="Package\Sex.Paths[Union All Output 1]"
+              endId="Package\Sex\InsertSex.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Sex\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="95.2,41.6"
+          Id="Package\Sex"
+          TopLeft="332.642857839259,101.852941092014" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sex">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Sex\AddSexDescription"
+          TopLeft="342.857143586996,235.905882184027" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Sex\DeleteDuplicateValues"
+          TopLeft="332.857143565708,138.411764584559" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Sex\LoadFromCSV"
+          TopLeft="355.714286471508,45.8823529009588" />
+        <NodeLayout
+          Size="118.4,41.6"
+          Id="Package\Sex\AddMale"
+          TopLeft="360.000000766346,324.870588008735" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Sex\Union All"
+          TopLeft="359.285715050539,414.858823355806" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Sex\InsertSex"
+          TopLeft="356.428572187314,522.847058543347" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Sex\AddOther"
+          TopLeft="575.71428693983,321.047058600321" />
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package\Sex\AddFemale"
+          TopLeft="163.571428919629,321.058823276041" />
+        <EdgeLayout
+          Id="Package\Sex.Paths[Flat File Source Output]"
+          TopLeft="426.085715018608,87.4823529009588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.9294116836003"
+              Start="0,0"
+              End="0,43.4294116836003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4294116836003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Female]"
+          TopLeft="386.257143586996,277.505882184027">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-157.485714667367,43.5529410920136"
+              Start="0,0"
+              End="-157.485714667367,36.0529410920136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.9777943216592" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.9777943216592"
+                    Point2="0,14.9777943216592"
+                    Point3="-4,14.9777943216592" />
+                  <mssgle:LineSegment
+                    End="-153.485714667367,14.9777943216592" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-153.485714667367,14.9777943216592"
+                    Point2="-157.485714667367,14.9777943216592"
+                    Point3="-157.485714667367,18.9777943216592" />
+                  <mssgle:LineSegment
+                    End="-157.485714667367,36.0529410920136" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-95.0792049899333,19.9777943216592,32.6726953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Derived Column Output2]"
+          TopLeft="637.31428693983,362.647058600321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-190.028571889291,52.2117647554842"
+              Start="0,0"
+              End="-190.028571889291,44.7117647554842">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0511509274898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.0511509274898"
+                    Point2="0,34.0511509274898"
+                    Point3="-4,34.0511509274898" />
+                  <mssgle:LineSegment
+                    End="-186.028571889291,34.0511509274898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-186.028571889291,34.0511509274898"
+                    Point2="-190.028571889291,34.0511509274898"
+                    Point3="-190.028571889291,38.0511509274898" />
+                  <mssgle:LineSegment
+                    End="-190.028571889291,44.7117647554842" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Derived Column Output1]"
+          TopLeft="419.242857908442,366.470588008735">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.388235347071"
+              Start="0,0"
+              End="0,40.888235347071">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.888235347071" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Derived Column Output]"
+          TopLeft="228.771428919629,362.658823276041">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="162.51428613091,52.200000079765"
+              Start="0,0"
+              End="162.51428613091,44.700000079765">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0434783128902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.0434783128902"
+                    Point2="0,34.0434783128902"
+                    Point3="4,34.0434783128902" />
+                  <mssgle:LineSegment
+                    End="158.51428613091,34.0434783128902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="158.51428613091,34.0434783128902"
+                    Point2="162.51428613091,34.0434783128902"
+                    Point3="162.51428613091,38.0434783128902" />
+                  <mssgle:LineSegment
+                    End="162.51428613091,44.700000079765" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Union All Output 1]"
+          TopLeft="418.657143618927,456.458823355806">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.3882351875409"
+              Start="0,0"
+              End="0,58.8882351875409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.8882351875409" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Sort Output]"
+          TopLeft="425.057143576352,180.011764584559">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.8941175994679"
+              Start="0,0"
+              End="0,48.3941175994679">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.3941175994679" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Other]"
+          TopLeft="465.057143586996,277.505882184027">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172.257143352834,43.5411764162943"
+              Start="0,0"
+              End="172.257143352834,36.0411764162943">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.9737484664594" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.9737484664594"
+                    Point2="0,14.9737484664594"
+                    Point3="4,14.9737484664594" />
+                  <mssgle:LineSegment
+                    End="168.257143352834,14.9737484664594" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168.257143352834,14.9737484664594"
+                    Point2="172.257143352834,14.9737484664594"
+                    Point3="172.257143352834,18.9737484664594" />
+                  <mssgle:LineSegment
+                    End="172.257143352834,36.0411764162943" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="72.8823607389172,19.9737484664594,26.492421875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sex.Paths[Male]"
+          TopLeft="422.428572176671,277.505882184027">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.3647058247076"
+              Start="0,0"
+              End="0,39.8647058247076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.8647058247076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.75634765625,15.0578411936038,21.5126953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sex\InsertSex">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

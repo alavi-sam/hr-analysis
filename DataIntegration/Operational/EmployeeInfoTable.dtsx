@@ -1,0 +1,3033 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2023 7:34:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-OLK7CR6"
+  DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
+  DTS:DTSID="{08473478-3925-4967-A120-9C87867CC18A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{460C9933-FBC2-4AA6-B71D-BE15E99454C4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EmployeeInfo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{27AE9070-EA98-44E2-A6AE-7D795626DE99}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EmployeeInfo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\EmployeeInfo\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Conditional Split.Inputs[Conditional Split Input].Columns[HispanicLatino]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="HispanicLatino"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[HispanicLatino]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\Conditional Split.Outputs[No]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="No"
+                  synchronousInputId="Package\EmployeeInfo\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[HispanicLatino]} == "No"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">HispanicLatino == "No"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\Conditional Split.Outputs[Yes]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Yes"
+                  synchronousInputId="Package\EmployeeInfo\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\EmployeeInfo\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\EmployeeInfo\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Output].Columns[IsHispanic]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Output].Columns[IsHispanic]"
+                      name="IsHispanic"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_BOOL)0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\EmployeeInfo\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\EmployeeInfo\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Output].Columns[IsHispanic]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Output].Columns[IsHispanic]"
+                      name="IsHispanic"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_BOOL)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_BOOL)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\EmployeeInfo\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\FindCitizenID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FindCitizenID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[CitizenDescription]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[CitizenDescription]) [refTable]
+where [refTable].[Citizen] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Citizen" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[CitizenDesc]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeeInfo\FindCitizenID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\FindCitizenID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\FindCitizenID.Inputs[Lookup Input].Columns[CitizenDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CitizenDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[CitizenDesc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Citizen</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindCitizenID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Match Output].Columns[CitizenID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Match Output].Columns[CitizenID]"
+                      name="CitizenID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindCitizenID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\EmployeeInfo\FindCitizenID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\FindMaritalStatusID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FindMaritalStatusID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[MaritalStatus]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[MaritalStatus]) [refTable]
+where [refTable].[MaritalDescription] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaritalDescription" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeeInfo\FindMaritalStatusID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\FindMaritalStatusID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\FindMaritalStatusID.Inputs[Lookup Input].Columns[MaritalDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MaritalDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">MaritalDescription</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindMaritalStatusID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Match Output].Columns[MaritalStatusID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Match Output].Columns[MaritalStatusID]"
+                      name="MaritalStatusID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindMaritalStatusID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\EmployeeInfo\FindMaritalStatusID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\FindRaceID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FindRaceID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Race]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Race]) [refTable]
+where [refTable].[RaceDescription] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RaceDescription" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeeInfo\FindRaceID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\FindRaceID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\FindRaceID.Inputs[Lookup Input].Columns[RaceDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RaceDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">RaceDescription</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindRaceID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Match Output].Columns[RaceID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Match Output].Columns[RaceID]"
+                      name="RaceID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindRaceID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\EmployeeInfo\FindRaceID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\FindSexID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FindSexID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Sex]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Sex]) [refTable]
+where [refTable].[SexPlaceHolder] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SexPlaceHolder" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SexDescription" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeeInfo\FindSexID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\FindSexID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\FindSexID.Inputs[Lookup Input].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SexPlaceHolder</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindSexID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Match Output].Columns[SexID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Match Output].Columns[SexID]"
+                      name="SexID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindSexID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\EmployeeInfo\FindSexID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\EmployeeInfo\FindSexID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\LoadFromCSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="LoadFromCSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeeInfo\LoadFromCSV.Connections[FlatFileConnection]"
+                  connectionManagerID="{440D46F4-5351-4CD9-B497-04EE9516068D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[HRDatasetCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]"
+                      name="Employee_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Zip]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Zip]"
+                      name="Zip"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[DOB]"
+                      name="DOB"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]"
+                      name="Sex"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]"
+                      name="MaritalDesc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[CitizenDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[CitizenDesc]"
+                      name="CitizenDesc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[HispanicLatino]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[HispanicLatino]"
+                      name="HispanicLatino"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]"
+                      name="RaceDesc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MarriedID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MarriedID]"
+                      name="MarriedID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Employee_Name" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MarriedID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MaritalStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="GenderID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeptID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PerfScoreID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FromDiversityJobFairID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Salary" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Termd" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PositionID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Position" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Zip" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DOB" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Sex" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MaritalDesc" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CitizenDesc" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="HispanicLatino" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RaceDesc" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateofHire" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateofTermination" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TermReason" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmploymentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="RecruitmentSource" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PerformanceScore" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EngagementSurvey" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="EmpSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SpecialProjectsCount" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastPerformanceReview_Date" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DaysLateLast30" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Absences" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[EmployeeInfo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\EmployeeInfo\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[State]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[RaceID]"
+                      cachedDataType="ui1"
+                      cachedName="RaceID"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RaceID]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceID]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SexID]"
+                      cachedDataType="ui1"
+                      cachedName="SexID"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SexID]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[SexID]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatusID]"
+                      cachedDataType="ui1"
+                      cachedName="MaritalStatusID"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatusID]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalStatusID]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MarriedID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MarriedID"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsMarried]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MarriedID]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Zip"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Zip]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CitizenID]"
+                      cachedDataType="ui1"
+                      cachedName="CitizenID"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CitizenDescriptionID]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenID]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DOB]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DOB"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[DOB]" />
+                    <inputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsHispanic]"
+                      cachedDataType="bool"
+                      cachedName="IsHispanic"
+                      externalMetadataColumnId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HispanicLatino]"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[IsHispanic]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i2"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="100"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="100"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SexID]"
+                      dataType="ui1"
+                      name="SexID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsMarried]"
+                      dataType="bool"
+                      name="IsMarried" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatusID]"
+                      dataType="ui1"
+                      name="MaritalStatusID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[RaceID]"
+                      dataType="ui1"
+                      name="RaceID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HispanicLatino]"
+                      dataType="bool"
+                      name="HispanicLatino" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="ZipCode" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CitizenDescriptionID]"
+                      dataType="ui1"
+                      name="CitizenDescriptionID" />
+                    <externalMetadataColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\ReplaceSexSpace"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="ReplaceSexSpace"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\ReplaceSexSpace.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\ReplaceSexSpace.Inputs[Derived Column Input].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]}," ","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(Sex," ","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\EmployeeInfo\ReplaceSexSpace.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\EmployeeInfo\ReplaceSexSpace.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\SplitFirstNameAndLastName"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="SplitFirstNameAndLastName"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Inputs[Derived Column Input].Columns[Employee_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Employee_Name"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\EmployeeInfo\SplitFirstNameAndLastName.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]},",",1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(Employee_Name,",",1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TOKEN](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]},",",2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TOKEN(Employee_Name,",",2)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\EmployeeInfo\SplitFirstNameAndLastName.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\EmployeeInfo\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[Employee_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Employee_Name"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Employee_Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[State]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[Zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Zip"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Zip]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Zip]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[DOB]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DOB"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[DOB]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[DOB]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[MaritalDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MaritalDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalDesc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[CitizenDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CitizenDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[CitizenDesc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenDesc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[HispanicLatino]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="HispanicLatino"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[HispanicLatino]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[HispanicLatino]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[RaceDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RaceDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceDesc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[MarriedID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MarriedID"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MarriedID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MarriedID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[RaceID]"
+                      cachedDataType="ui1"
+                      cachedName="RaceID"
+                      lineageId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Match Output].Columns[RaceID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[SexID]"
+                      cachedDataType="ui1"
+                      cachedName="SexID"
+                      lineageId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Match Output].Columns[SexID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[SexID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[MaritalStatusID]"
+                      cachedDataType="ui1"
+                      cachedName="MaritalStatusID"
+                      lineageId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Match Output].Columns[MaritalStatusID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalStatusID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[CitizenID]"
+                      cachedDataType="ui1"
+                      cachedName="CitizenID"
+                      lineageId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Match Output].Columns[CitizenID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1].Columns[IsHispanic]"
+                      cachedDataType="bool"
+                      cachedName="IsHispanic"
+                      lineageId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Output].Columns[IsHispanic]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[IsHispanic]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[Employee_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Employee_Name"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Employee_Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[State]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[State]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[Zip]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Zip"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Zip]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Zip]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[DOB]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DOB"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[DOB]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[DOB]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[Sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Sex"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Sex]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Sex]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[MaritalDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MaritalDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalDesc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[CitizenDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CitizenDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[CitizenDesc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenDesc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[HispanicLatino]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="HispanicLatino"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[HispanicLatino]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[HispanicLatino]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[RaceDesc]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RaceDesc"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceDesc]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[MarriedID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MarriedID"
+                      lineageId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[MarriedID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MarriedID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[RaceID]"
+                      cachedDataType="ui1"
+                      cachedName="RaceID"
+                      lineageId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Match Output].Columns[RaceID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[SexID]"
+                      cachedDataType="ui1"
+                      cachedName="SexID"
+                      lineageId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Match Output].Columns[SexID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[SexID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[MaritalStatusID]"
+                      cachedDataType="ui1"
+                      cachedName="MaritalStatusID"
+                      lineageId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Match Output].Columns[MaritalStatusID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalStatusID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[CitizenID]"
+                      cachedDataType="ui1"
+                      cachedName="CitizenID"
+                      lineageId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Match Output].Columns[CitizenID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[LastName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[FirstName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2].Columns[IsHispanic]"
+                      cachedDataType="bool"
+                      cachedName="IsHispanic"
+                      lineageId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Output].Columns[IsHispanic]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[IsHispanic]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\EmployeeInfo\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Employee_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Employee_Name]"
+                      name="Employee_Name" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Zip]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Zip]"
+                      name="Zip" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[DOB]"
+                      name="DOB" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Sex]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[Sex]"
+                      name="Sex" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalDesc]"
+                      name="MaritalDesc" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenDesc]"
+                      name="CitizenDesc" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[HispanicLatino]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[HispanicLatino]"
+                      name="HispanicLatino" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceDesc]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceDesc]"
+                      name="RaceDesc" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MarriedID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MarriedID]"
+                      name="MarriedID" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceID]"
+                      dataType="ui1"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[RaceID]"
+                      name="RaceID" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[SexID]"
+                      dataType="ui1"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[SexID]"
+                      name="SexID" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalStatusID]"
+                      dataType="ui1"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[MaritalStatusID]"
+                      name="MaritalStatusID" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenID]"
+                      dataType="ui1"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[CitizenID]"
+                      name="CitizenID" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[IsHispanic]"
+                      dataType="bool"
+                      lineageId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1].Columns[IsHispanic]"
+                      name="IsHispanic" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\EmployeeInfo.Paths[Derived Column Output]"
+              endId="Package\EmployeeInfo\FindSexID.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\EmployeeInfo\ReplaceSexSpace.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Derived Column Output1]"
+              endId="Package\EmployeeInfo\Conditional Split.Inputs[Conditional Split Input]"
+              name="Derived Column Output"
+              startId="Package\EmployeeInfo\SplitFirstNameAndLastName.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Derived Column Output2]"
+              endId="Package\EmployeeInfo\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\EmployeeInfo\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Derived Column Output3]"
+              endId="Package\EmployeeInfo\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\EmployeeInfo\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Flat File Source Output]"
+              endId="Package\EmployeeInfo\FindRaceID.Inputs[Lookup Input]"
+              name="Flat File Source Output"
+              startId="Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Lookup Match Output]"
+              endId="Package\EmployeeInfo\FindMaritalStatusID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\EmployeeInfo\FindSexID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Lookup Match Output1]"
+              endId="Package\EmployeeInfo\FindCitizenID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\EmployeeInfo\FindMaritalStatusID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Lookup Match Output2]"
+              endId="Package\EmployeeInfo\SplitFirstNameAndLastName.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\EmployeeInfo\FindCitizenID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Lookup Match Output3]"
+              endId="Package\EmployeeInfo\ReplaceSexSpace.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\EmployeeInfo\FindRaceID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[No]"
+              endId="Package\EmployeeInfo\Derived Column.Inputs[Derived Column Input]"
+              name="No"
+              startId="Package\EmployeeInfo\Conditional Split.Outputs[No]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Union All Output 1]"
+              endId="Package\EmployeeInfo\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\EmployeeInfo\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\EmployeeInfo.Paths[Yes]"
+              endId="Package\EmployeeInfo\Derived Column 1.Inputs[Derived Column Input]"
+              name="Yes"
+              startId="Package\EmployeeInfo\Conditional Split.Outputs[Yes]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\EmployeeInfo"
+          TopLeft="375.714286514083,79.5294116949953" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\EmployeeInfo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\EmployeeInfo\LoadFromCSV"
+          TopLeft="345.000000734414,12.2352941069224" />
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package\EmployeeInfo\FindRaceID"
+          TopLeft="347.142857881833,76.4705881682647" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Flat File Source Output]"
+          TopLeft="415.071429308124,53.8352941069224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,22.6352940613423"
+              Start="0,0"
+              End="0,15.1352940613423">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1352940613423" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\EmployeeInfo\FindSexID"
+          TopLeft="349.285715029252,230.941176268159" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\EmployeeInfo\FindMaritalStatusID"
+          TopLeft="332.142857849902,301.294117382963" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Lookup Match Output]"
+          TopLeft="414.914286439577,272.541176268159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.7529411148034"
+              Start="0,0"
+              End="0,21.2529411148034">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.2529411148034" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,4.82178305740169,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\EmployeeInfo\FindCitizenID"
+          TopLeft="346.428572166027,376.247058509161" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Lookup Match Output1]"
+          TopLeft="417.085715007964,342.894117382962">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.3529411261986"
+              Start="0,0"
+              End="0,25.8529411261986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8529411261986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.12178306309931,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\EmployeeInfo\SplitFirstNameAndLastName"
+          TopLeft="313.571429238939,451.658823219065" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Lookup Match Output2]"
+          TopLeft="418.000000702483,417.847058509161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.8117647099041"
+              Start="0,0"
+              End="0,26.3117647099041">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3117647099041" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.35119485495204,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\EmployeeInfo\OLE DB Destination"
+          TopLeft="330.000000702483,742.823528964008" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\EmployeeInfo\ReplaceSexSpace"
+          TopLeft="329.285714986677,150.023529283068" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Lookup Match Output3]"
+          TopLeft="411.214286434255,118.070588168265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9529411148035"
+              Start="0,0"
+              End="0,24.4529411148035">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4529411148035" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,6.42178305740174,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Derived Column Output]"
+          TopLeft="410.885715007965,191.623529283068">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.317646985091"
+              Start="0,0"
+              End="0,31.817646985091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.817646985091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\EmployeeInfo\Conditional Split"
+          TopLeft="340.714286439577,530.352941114804" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Derived Column Output1]"
+          TopLeft="418.542857839258,493.258823219065">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.0941178957383"
+              Start="0,0"
+              End="0,29.5941178957383">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5941178957383" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\EmployeeInfo\Derived Column"
+          TopLeft="245.000000521541,600.352941046434" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\EmployeeInfo\Derived Column 1"
+          TopLeft="472.857143863732,606.470588099895" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[No]"
+          TopLeft="417.914286439577,571.952941114804">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-96.5142859180363,28.3999999316301"
+              Start="0,0"
+              End="-96.5142859180363,20.8999999316301">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.199999965815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.199999965815"
+                    Point2="0,14.199999965815"
+                    Point3="-4,14.199999965815" />
+                  <mssgle:LineSegment
+                    End="-92.5142859180363,14.199999965815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-92.5142859180363,14.199999965815"
+                    Point2="-96.5142859180363,14.199999965815"
+                    Point3="-96.5142859180363,18.199999965815" />
+                  <mssgle:LineSegment
+                    End="-96.5142859180363,20.8999999316301" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-54.7991742090181,19.199999965815,13.0840625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Yes]"
+          TopLeft="442.314286439577,571.952941114804">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.742857424155,34.5176469850911"
+              Start="0,0"
+              End="111.742857424155,27.0176469850911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.0194750831755" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.0194750831755"
+                    Point2="0,14.0194750831755"
+                    Point3="4,14.0194750831755" />
+                  <mssgle:LineSegment
+                    End="107.742857424155,14.0194750831755" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.742857424155,14.0194750831755"
+                    Point2="111.742857424155,14.0194750831755"
+                    Point3="111.742857424155,18.0194750831755" />
+                  <mssgle:LineSegment
+                    End="111.742857424155,27.0176469850911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="47.1983427745773,19.0194750831755,17.346171875,9.40234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\EmployeeInfo\Union All"
+          TopLeft="359.285715050539,671.894117508308" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Derived Column Output2]"
+          TopLeft="321.400000521541,641.952941046434">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.2190478623321,29.9411764618742"
+              Start="0,0"
+              End="79.2190478623321,22.4411764618742">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.728328168215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.728328168215"
+                    Point2="0,17.728328168215"
+                    Point3="4,17.728328168215" />
+                  <mssgle:LineSegment
+                    End="75.2190478623321,17.728328168215" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.2190478623321,17.728328168215"
+                    Point2="79.2190478623321,17.728328168215"
+                    Point3="79.2190478623321,21.728328168215" />
+                  <mssgle:LineSegment
+                    End="79.2190478623321,22.4411764618742" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Derived Column Output3]"
+          TopLeft="554.057143863732,648.070588099895">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-116.104762146525,23.8235294084132"
+              Start="0,0"
+              End="-116.104762146525,16.3235294084132">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.1060371497183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.1060371497183"
+                    Point2="0,14.1060371497183"
+                    Point3="-4,14.1060371497183" />
+                  <mssgle:LineSegment
+                    End="-112.104762146525,14.1060371497183" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-112.104762146525,14.1060371497183"
+                    Point2="-116.104762146525,14.1060371497183"
+                    Point3="-116.104762146525,18.1060371497183" />
+                  <mssgle:LineSegment
+                    End="-116.104762146525,16.3235294084132" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Union All Output 1]"
+          TopLeft="417.242857876511,713.494117508308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.3294114556996"
+              Start="0,0"
+              End="0,21.8294114556996">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8294114556996" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeeInfo\FindRaceID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Race]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeeInfo\FindSexID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Sex]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeeInfo\FindMaritalStatusID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[MaritalStatus]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeeInfo\FindCitizenID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[CitizenDescription]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\EmployeeInfo\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
