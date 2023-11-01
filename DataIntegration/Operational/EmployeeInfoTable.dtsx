@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{C903CA34-EBCC-4FEF-9955-332DA070C560}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{2DE177F6-1A5E-47F0-BB22-823BFD88FAB3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1879,13 +1879,13 @@ where [refTable].[SexPlaceHolder] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[TOKEN](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]},",",1)</property>
+                          name="Expression">[TRIM]([TOKEN](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]},",",1))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">TOKEN(Employee_Name,",",1)</property>
+                          name="FriendlyExpression">TRIM(TOKEN(Employee_Name,",",1))</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -1902,13 +1902,13 @@ where [refTable].[SexPlaceHolder] = ?</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[TOKEN](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]},",",2)</property>
+                          name="Expression">[TRIM]([TOKEN](#{Package\EmployeeInfo\LoadFromCSV.Outputs[Flat File Source Output].Columns[Employee_Name]},",",2))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">TOKEN(Employee_Name,",",2)</property>
+                          name="FriendlyExpression">TRIM(TOKEN(Employee_Name,",",2))</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2707,53 +2707,115 @@ where [refTable].[SexPlaceHolder] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="211.2,41.6"
-          Id="Package\EmployeeInfo\SplitFirstNameAndLastName"
-          TopLeft="313.571429238939,451.658823219065" />
+          Size="170.4,41.6"
+          Id="Package\EmployeeInfo\OLE DB Destination"
+          TopLeft="328.57142927087,841.470587701069" />
         <NodeLayout
-          Size="126.4,41.6"
-          Id="Package\EmployeeInfo\FindSexID"
-          TopLeft="349.285715029252,230.941176268159" />
+          Size="134.4,41.6"
+          Id="Package\EmployeeInfo\NotHispanic"
+          TopLeft="245.000000521541,600.352941046434" />
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package\EmployeeInfo\FindRaceID"
+          TopLeft="347.142857881833,76.4705881682647" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\EmployeeInfo\LoadFromCSV"
+          TopLeft="345.000000734414,12.2352941069224" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\EmployeeInfo\Union All"
+          TopLeft="359.285715050539,671.894117508308" />
         <NodeLayout
           Size="140.8,41.6"
           Id="Package\EmployeeInfo\FindCitizenID"
           TopLeft="346.428572166027,376.247058509161" />
         <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\EmployeeInfo\FindSexID"
+          TopLeft="349.285715029252,230.941176268159" />
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\EmployeeInfo\SplitFirstNameAndLastName"
+          TopLeft="313.571429238939,451.658823219065" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\EmployeeInfo\IsHispanicLatino"
+          TopLeft="340.714286439577,530.352941114804" />
+        <NodeLayout
           Size="160,41.6"
           Id="Package\EmployeeInfo\ReplaceSexSpace"
           TopLeft="329.285714986677,150.023529283068" />
+        <NodeLayout
+          Size="230.4,41.6"
+          Id="Package\EmployeeInfo\EmplyeeNumberTypeConversion"
+          TopLeft="302.857143501846,759.082352832589" />
         <NodeLayout
           Size="117.6,41.6"
           Id="Package\EmployeeInfo\Hispanic"
           TopLeft="472.857143863732,606.470588099895" />
         <NodeLayout
           Size="170.4,41.6"
-          Id="Package\EmployeeInfo\OLE DB Destination"
-          TopLeft="328.57142927087,841.470587701069" />
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\EmployeeInfo\LoadFromCSV"
-          TopLeft="345.000000734414,12.2352941069224" />
-        <NodeLayout
-          Size="170.4,41.6"
           Id="Package\EmployeeInfo\FindMaritalStatusID"
           TopLeft="332.142857849902,301.294117382963" />
-        <NodeLayout
-          Size="134.4,41.6"
-          Id="Package\EmployeeInfo\NotHispanic"
-          TopLeft="245.000000521541,600.352941046434" />
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\EmployeeInfo\Union All"
-          TopLeft="359.285715050539,671.894117508308" />
-        <NodeLayout
-          Size="132,41.6"
-          Id="Package\EmployeeInfo\FindRaceID"
-          TopLeft="347.142857881833,76.4705881682647" />
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\EmployeeInfo\IsHispanicLatino"
-          TopLeft="340.714286439577,530.352941114804" />
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Yes]"
+          TopLeft="442.84761977291,571.952941114804">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.8095240908217,34.517646985091"
+              Start="0,0"
+              End="88.8095240908217,27.017646985091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.0183913265982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.0183913265982"
+                    Point2="0,14.0183913265982"
+                    Point3="4,14.0183913265982" />
+                  <mssgle:LineSegment
+                    End="84.8095240908217,14.0183913265982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.8095240908217,14.0183913265982"
+                    Point2="88.8095240908217,14.0183913265982"
+                    Point3="88.8095240908217,18.0183913265982" />
+                  <mssgle:LineSegment
+                    End="88.8095240908217,27.017646985091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="35.7316761079109,19.0183913265982,17.346171875,9.40234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\EmployeeInfo.Paths[Union All Output 1]"
+          TopLeft="418.671429276192,713.494117508308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5882353242808"
+              Start="0,0"
+              End="0,38.0882353242808">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0882353242808" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\EmployeeInfo.Paths[No]"
           TopLeft="393.780953106244,571.952941114804">
@@ -3021,68 +3083,6 @@ where [refTable].[SexPlaceHolder] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\EmployeeInfo.Paths[Yes]"
-          TopLeft="442.84761977291,571.952941114804">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88.8095240908217,34.517646985091"
-              Start="0,0"
-              End="88.8095240908217,27.017646985091">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.0183913265982" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.0183913265982"
-                    Point2="0,14.0183913265982"
-                    Point3="4,14.0183913265982" />
-                  <mssgle:LineSegment
-                    End="84.8095240908217,14.0183913265982" />
-                  <mssgle:CubicBezierSegment
-                    Point1="84.8095240908217,14.0183913265982"
-                    Point2="88.8095240908217,14.0183913265982"
-                    Point3="88.8095240908217,18.0183913265982" />
-                  <mssgle:LineSegment
-                    End="88.8095240908217,27.017646985091" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="35.7316761079109,19.0183913265982,17.346171875,9.40234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="230.4,41.6"
-          Id="Package\EmployeeInfo\EmplyeeNumberTypeConversion"
-          TopLeft="302.857143501846,759.082352832589" />
-        <EdgeLayout
-          Id="Package\EmployeeInfo.Paths[Union All Output 1]"
-          TopLeft="418.671429276192,713.494117508308">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.5882353242808"
-              Start="0,0"
-              End="0,38.0882353242808">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.0882353242808" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\EmployeeInfo.Paths[Data Conversion Output]"
           TopLeft="415.914286386358,800.682352832589">
           <EdgeLayout.Curve>
@@ -3108,25 +3108,15 @@ where [refTable].[SexPlaceHolder] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\EmployeeInfo\FindCitizenID">
+    design-time-name="Package\EmployeeInfo\OLE DB Destination">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[CitizenDescription]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3154,7 +3144,7 @@ where [refTable].[SexPlaceHolder] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\EmployeeInfo\FindMaritalStatusID">
+    design-time-name="Package\EmployeeInfo\FindCitizenID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -3164,7 +3154,7 @@ where [refTable].[SexPlaceHolder] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[MaritalStatus]</Value>
+          type="q3:string">[dbo].[CitizenDescription]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -3200,15 +3190,25 @@ where [refTable].[SexPlaceHolder] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\EmployeeInfo\OLE DB Destination">
+    design-time-name="Package\EmployeeInfo\FindMaritalStatusID">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[MaritalStatus]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

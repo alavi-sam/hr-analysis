@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{52995211-5D95-4288-9757-4C55C94767A4}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{BAAC26E7-E0BA-43EA-B8B4-594D73F83F2C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3865,7 +3865,7 @@ where [refTable].[Reason] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Employee.Paths[Data Conversion Output2]"
+              refId="Package\Employee.Paths[Data Conversion Output]"
               endId="Package\Employee\StripDateOfTermination.Inputs[Derived Column Input]"
               name="Data Conversion Output"
               startId="Package\Employee\SalaryDataConversion.Outputs[Data Conversion Output]" />
@@ -3875,27 +3875,27 @@ where [refTable].[Reason] = ?</property>
               name="Data Conversion Output"
               startId="Package\Employee\ConvertDateOfTerminationType.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Employee.Paths[Data Conversion Output]"
+              refId="Package\Employee.Paths[Data Conversion Output2]"
               endId="Package\Employee\FindEmployeeID.Inputs[Lookup Input]"
               name="Data Conversion Output"
               startId="Package\Employee\EmployeeNumberDataConversion.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Employee.Paths[Derived Column Output3]"
+              refId="Package\Employee.Paths[Derived Column Output]"
               endId="Package\Employee\AllData.Inputs[Union All Input 2]"
               name="Derived Column Output"
               startId="Package\Employee\ReplaceWithNULL.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Employee.Paths[Derived Column Output2]"
+              refId="Package\Employee.Paths[Derived Column Output1]"
               endId="Package\Employee\DateOfTerminationIsNull.Inputs[Conditional Split Input]"
               name="Derived Column Output"
               startId="Package\Employee\StripDateOfTermination.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Employee.Paths[Derived Column Output]"
+              refId="Package\Employee.Paths[Derived Column Output2]"
               endId="Package\Employee\Union All.Inputs[Union All Input 1]"
               name="Derived Column Output"
               startId="Package\Employee\Terminated.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Employee.Paths[Derived Column Output1]"
+              refId="Package\Employee.Paths[Derived Column Output3]"
               endId="Package\Employee\Union All.Inputs[Union All Input 2]"
               name="Derived Column Output"
               startId="Package\Employee\NotTerminated.Outputs[Derived Column Output]" />
@@ -3911,34 +3911,34 @@ where [refTable].[Reason] = ?</property>
               startId="Package\Employee\DateOfTerminationIsNull.Outputs[IsNull]" />
             <path
               refId="Package\Employee.Paths[Lookup Match Output5]"
-              endId="Package\Employee\FindRecruitmentSourceID.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Employee\FindEmployeeID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Employee.Paths[Lookup Match Output]"
-              endId="Package\Employee\FindPositionID.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Employee\FindRecruitmentSourceID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Employee.Paths[Lookup Match Output4]"
-              endId="Package\Employee\IsTerminated.Inputs[Conditional Split Input]"
-              name="Lookup Match Output"
-              startId="Package\Employee\FindTerminateReasonID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Employee.Paths[Lookup Match Output3]"
               endId="Package\Employee\FindTerminateReasonID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Employee\FindEmployeeStatusID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Employee.Paths[Lookup Match Output2]"
+              refId="Package\Employee.Paths[Lookup Match Output4]"
               endId="Package\Employee\FindEmployeeStatusID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Employee\FindDepartmentID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Employee.Paths[Lookup Match Output1]"
+              refId="Package\Employee.Paths[Lookup Match Output3]"
               endId="Package\Employee\FindDepartmentID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Employee\FindPositionID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Employee.Paths[Lookup Match Output]"
+              endId="Package\Employee\IsTerminated.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Employee\FindTerminateReasonID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Employee.Paths[Lookup Match Output1]"
+              endId="Package\Employee\FindPositionID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Employee\FindRecruitmentSourceID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Employee.Paths[Lookup Match Output2]"
+              endId="Package\Employee\FindRecruitmentSourceID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Employee\FindEmployeeID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Employee.Paths[no]"
               endId="Package\Employee\NotTerminated.Inputs[Derived Column Input]"
@@ -3951,14 +3951,14 @@ where [refTable].[Reason] = ?</property>
               startId="Package\Employee\DateOfTerminationIsNull.Outputs[NotNull]" />
             <path
               refId="Package\Employee.Paths[Union All Output 11]"
-              endId="Package\Employee\InsertEmployee.Inputs[OLE DB Destination Input]"
-              name="Union All Output 1"
-              startId="Package\Employee\AllData.Outputs[Union All Output 1]" />
-            <path
-              refId="Package\Employee.Paths[Union All Output 1]"
               endId="Package\Employee\SalaryDataConversion.Inputs[Data Conversion Input]"
               name="Union All Output 1"
               startId="Package\Employee\Union All.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Employee.Paths[Union All Output 1]"
+              endId="Package\Employee\InsertEmployee.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Employee\AllData.Outputs[Union All Output 1]" />
             <path
               refId="Package\Employee.Paths[yes]"
               endId="Package\Employee\Terminated.Inputs[Derived Column Input]"
@@ -3983,104 +3983,317 @@ where [refTable].[Reason] = ?</property>
           version="1">
           <components>
             <component
-              refId="Package\Manager\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
+              refId="Package\Manager\FindEmployeeID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FindEmployeeID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[EmployeeInfo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[EmployeeInfo]) [refTable]
+where [refTable].[EmployeeNumber] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeNumber" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SexID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsMarried" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaritalStatusID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RaceID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HispanicLatino" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="State" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CitizenDescriptionID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[EmpID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Manager\FindEmployeeID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
               <inputs>
                 <input
-                  refId="Package\Manager\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
+                  refId="Package\Manager\FindEmployeeID.Inputs[Lookup Input]"
+                  name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Manager\Derived Column.Inputs[Derived Column Input].Columns[ManagerName]"
+                      refId="Package\Manager\FindEmployeeID.Inputs[Lookup Input].Columns[EmpID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="ManagerName"
-                      lineageId="Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]" />
+                      cachedName="EmpID"
+                      lineageId="Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[EmpID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">EmployeeNumber</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Manager\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
+                  refId="Package\Manager\FindEmployeeID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
                   exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Manager\Derived Column.Inputs[Derived Column Input]">
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Manager\FindEmployeeID.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Manager\Derived Column.Outputs[Derived Column Output].Columns[EmployeeFirstName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Manager\Derived Column.Outputs[Derived Column Output].Columns[EmployeeFirstName]"
-                      name="EmployeeFirstName"
+                      refId="Package\Manager\FindEmployeeID.Outputs[Lookup Match Output].Columns[EmployeeID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Manager\FindEmployeeID.Outputs[Lookup Match Output].Columns[EmployeeID]"
+                      name="EmployeeID"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
-                          containsID="true"
                           dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]},[LEN](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]}) - [FINDSTRING]([REVERSE](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]})," ",1) + 1)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(ManagerName,LEN(ManagerName) - FINDSTRING(REVERSE(ManagerName)," ",1) + 1)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Manager\Derived Column.Outputs[Derived Column Output].Columns[EmployeeLastName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Manager\Derived Column.Outputs[Derived Column Output].Columns[EmployeeLastName]"
-                      name="EmployeeLastName"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[REVERSE]([LEFT]([REVERSE](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]}),[FINDSTRING]([REVERSE](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]})," ",1)))</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">REVERSE(LEFT(REVERSE(ManagerName),FINDSTRING(REVERSE(ManagerName)," ",1)))</property>
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Manager\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
+                  refId="Package\Manager\FindEmployeeID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Manager\FindEmployeeID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Manager\FindEmployeeID.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Manager\Derived Column.Inputs[Derived Column Input]">
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Manager\FindEmployeeID.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Manager\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Manager\FindEmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Manager\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Manager\FindEmployeeID.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Manager\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Manager\FindEmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Manager\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Manager\FindEmployeeID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Manager\FindManagerID"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="FindManagerID"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[EmployeeInfo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[EmployeeInfo]) [refTable]
+where [refTable].[LastName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeNumber" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SexID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsMarried" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaritalStatusID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RaceID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HispanicLatino" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="State" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CitizenDescriptionID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output].Columns[ManagerLastName]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Manager\FindManagerID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Manager\FindManagerID.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Manager\FindManagerID.Inputs[Lookup Input].Columns[ManagerLastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ManagerLastName"
+                      lineageId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output].Columns[ManagerLastName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LastName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Manager\FindManagerID.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Manager\FindManagerID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Manager\FindManagerID.Outputs[Lookup Match Output].Columns[ManagerID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Manager\FindManagerID.Outputs[Lookup Match Output].Columns[ManagerID]"
+                      name="ManagerID"
+                      truncationRowDisposition="IgnoreFailure">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Manager\FindManagerID.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Manager\FindManagerID.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Manager\FindManagerID.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Manager\FindManagerID.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Manager\FindManagerID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Manager\FindManagerID.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Manager\FindManagerID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Manager\FindManagerID.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4458,157 +4671,104 @@ where [refTable].[Reason] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Manager\Lookup"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[EmployeeInfo]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[EmployeeInfo]) [refTable]
-where [refTable].[LastName] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeNumber" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SexID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsMarried" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MaritalStatusID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RaceID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HispanicLatino" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="State" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CitizenDescriptionID" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Manager\Derived Column.Outputs[Derived Column Output].Columns[EmployeeLastName]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Manager\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
-                  description="Connection manager used to access lookup data."
-                  name="OleDbConnection" />
-              </connections>
+              refId="Package\Manager\SplitLastNameAndFirstName"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="SplitLastNameAndFirstName"
+              usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Manager\Lookup.Inputs[Lookup Input]"
-                  name="Lookup Input">
+                  refId="Package\Manager\SplitLastNameAndFirstName.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Manager\Lookup.Inputs[Lookup Input].Columns[EmployeeLastName]"
-                      cachedDataType="wstr"
+                      refId="Package\Manager\SplitLastNameAndFirstName.Inputs[Derived Column Input].Columns[ManagerName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="50"
-                      cachedName="EmployeeLastName"
-                      lineageId="Package\Manager\Derived Column.Outputs[Derived Column Output].Columns[EmployeeLastName]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">LastName</property>
-                        <property
-                          dataType="System.Null"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
+                      cachedName="ManagerName"
+                      lineageId="Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Manager\Lookup.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
+                  refId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Manager\Lookup.Inputs[Lookup Input]">
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Manager\SplitLastNameAndFirstName.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Manager\Lookup.Outputs[Lookup Match Output].Columns[ID]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Manager\Lookup.Outputs[Lookup Match Output].Columns[ID]"
-                      name="ID"
+                      refId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output].Columns[ManagerFirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output].Columns[ManagerFirstName]"
+                      name="ManagerFirstName"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
+                          containsID="true"
                           dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">ID</property>
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]},[LEN](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]}) - [FINDSTRING]([REVERSE](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]})," ",1) + 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(ManagerName,LEN(ManagerName) - FINDSTRING(REVERSE(ManagerName)," ",1) + 1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output].Columns[ManagerLastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output].Columns[ManagerLastName]"
+                      name="ManagerLastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM]([REVERSE]([LEFT]([REVERSE](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]}),[FINDSTRING]([REVERSE](#{Package\Manager\LoadFromCSV.Outputs[Flat File Source Output].Columns[ManagerName]})," ",1))))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(REVERSE(LEFT(REVERSE(ManagerName),FINDSTRING(REVERSE(ManagerName)," ",1))))</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Manager\Lookup.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Manager\Lookup.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Manager\Lookup.Outputs[Lookup Error Output]"
+                  refId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Manager\Lookup.Inputs[Lookup Input]">
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Manager\SplitLastNameAndFirstName.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Manager\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Manager\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Manager\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Manager\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4617,119 +4777,112 @@ where [refTable].[LastName] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Manager\Lookup 1"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
-              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="Lookup 1"
+              refId="Package\Manager\UpdateManagerID"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="UpdateManagerID"
               usesDispositions="true"
-              version="6">
+              version="2">
               <properties>
                 <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
                   dataType="System.String"
-                  description="Specifies the SQL statement that generates the lookup table."
+                  description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the type of connection used to access the reference dataset."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the cache type of the lookup table."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml"></property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dbo.Employee
+SET ManagerID = ?
+WHERE EmployeeID = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
                   name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
-                  name="TreatDuplicateKeysAsError">false</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Manager\Lookup 1.Connections[OleDbConnection]"
-                  description="Connection manager used to access lookup data."
+                  refId="Package\Manager\UpdateManagerID.Connections[OleDbConnection]"
+                  connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
+                  description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Manager\Lookup 1.Inputs[Lookup Input]"
-                  name="Lookup Input">
-                  <externalMetadataColumns />
+                  refId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input].Columns[ManagerID]"
+                      cachedDataType="i2"
+                      cachedName="ManagerID"
+                      externalMetadataColumnId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Manager\FindManagerID.Outputs[Lookup Match Output].Columns[ManagerID]" />
+                    <inputColumn
+                      refId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input].Columns[EmployeeID]"
+                      cachedDataType="i2"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Manager\FindEmployeeID.Outputs[Lookup Match Output].Columns[EmployeeID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i2"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i2"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Manager\Lookup 1.Outputs[Lookup Match Output]"
-                  errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
+                  refId="Package\Manager\UpdateManagerID.Outputs[OLE DB Command Output]"
                   exclusionGroup="1"
-                  name="Lookup Match Output"
-                  synchronousInputId="Package\Manager\Lookup 1.Inputs[Lookup Input]">
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Manager\Lookup 1.Outputs[Lookup No Match Output]"
-                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
-                  exclusionGroup="1"
-                  name="Lookup No Match Output"
-                  synchronousInputId="Package\Manager\Lookup 1.Inputs[Lookup Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Manager\Lookup 1.Outputs[Lookup Error Output]"
+                  refId="Package\Manager\UpdateManagerID.Outputs[OLE DB Command Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="Lookup Error Output"
-                  synchronousInputId="Package\Manager\Lookup 1.Inputs[Lookup Input]">
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Manager\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Manager\UpdateManagerID.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Manager\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Manager\UpdateManagerID.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Manager\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Manager\UpdateManagerID.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Manager\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Manager\UpdateManagerID.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4741,19 +4894,24 @@ where [refTable].[LastName] = ?</property>
           <paths>
             <path
               refId="Package\Manager.Paths[Derived Column Output]"
-              endId="Package\Manager\Lookup.Inputs[Lookup Input]"
+              endId="Package\Manager\FindManagerID.Inputs[Lookup Input]"
               name="Derived Column Output"
-              startId="Package\Manager\Derived Column.Outputs[Derived Column Output]" />
+              startId="Package\Manager\SplitLastNameAndFirstName.Outputs[Derived Column Output]" />
             <path
               refId="Package\Manager.Paths[Flat File Source Output]"
-              endId="Package\Manager\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\Manager\SplitLastNameAndFirstName.Inputs[Derived Column Input]"
               name="Flat File Source Output"
               startId="Package\Manager\LoadFromCSV.Outputs[Flat File Source Output]" />
             <path
               refId="Package\Manager.Paths[Lookup Match Output]"
-              endId="Package\Manager\Lookup 1.Inputs[Lookup Input]"
+              endId="Package\Manager\FindEmployeeID.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Manager\Lookup.Outputs[Lookup Match Output]" />
+              startId="Package\Manager\FindManagerID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Manager.Paths[Lookup Match Output1]"
+              endId="Package\Manager\UpdateManagerID.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Manager\FindEmployeeID.Outputs[Lookup Match Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -4820,161 +4978,81 @@ where [refTable].[LastName] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="144,41.6"
-          Id="Package\Employee\LoadFromCSV"
-          TopLeft="342.14285787119,3.5527136788005E-15" />
+          Size="227.2,41.6"
+          Id="Package\Employee\ConvertDateOfTerminationType"
+          TopLeft="198.809524232737,1062.89803897192" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Employee\IsTerminated"
+          TopLeft="347.857143597639,604.929411432909" />
+        <NodeLayout
+          Size="152,43.2"
+          Id="Package\Employee\InsertEmployee"
+          TopLeft="350.714286460864,1206.42745043902" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Employee\FindPositionID"
+          TopLeft="352.142857892477,290.588235039406" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Employee\FindDepartmentID"
+          TopLeft="340.714286439577,374.705882024497" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Employee\StripDateOfTermination"
+          TopLeft="341.428572155383,915.635293913207" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Employee\Union All"
+          TopLeft="368.57142935602,753.729411432909" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Employee\ReplaceWithNULL"
+          TopLeft="453.095239059759,1060.58039197544" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\Employee\EmployeeNumberDataConversion"
+          TopLeft="298.571429207009,66.5294117063903" />
         <NodeLayout
           Size="198.4,41.6"
           Id="Package\Employee\FindRecruitmentSourceID"
           TopLeft="325.714286407646,211.058823344411" />
         <NodeLayout
-          Size="146.4,41.6"
-          Id="Package\Employee\FindPositionID"
-          TopLeft="352.142857892477,290.588235039406" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output]"
-          TopLeft="425.128572150061,252.658823344411">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.9294116949953"
-              Start="0,0"
-              End="0,30.4294116949953">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.4294116949953" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.41001834749765,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Employee\FindDepartmentID"
-          TopLeft="340.714286439577,374.705882024497" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output1]"
-          TopLeft="424.428572166027,332.188235039406">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.5176469850911"
-              Start="0,0"
-              End="0,35.0176469850911">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.0176469850911" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,11.7041359925456,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="184.8,41.6"
-          Id="Package\Employee\FindEmployeeStatusID"
-          TopLeft="330.71428641829,452.094117314593" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output2]"
-          TopLeft="423.314286428933,416.305882024497">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.7882352900959"
-              Start="0,0"
-              End="0,28.2882352900959">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.2882352900959" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.33943014504794,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="191.2,41.6"
-          Id="Package\Employee\FindTerminateReasonID"
-          TopLeft="330.000000702483,527.435293787862" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output3]"
-          TopLeft="424.357143560387,493.694117314593">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.7411764732693"
-              Start="0,0"
-              End="0,26.2411764732693">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.2411764732693" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,7.31590073663466,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\Employee\IsTerminated"
-          TopLeft="347.857143597639,604.929411432909" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output4]"
-          TopLeft="421.928572150061,569.035293787861">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.8941176450479"
-              Start="0,0"
-              End="0,28.3941176450479">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.3941176450479" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.39237132252396,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="155.2,41.6"
+          Id="Package\Employee\FindEmployeeID"
+          TopLeft="343.571429302802,136.882352821194" />
         <NodeLayout
           Size="132,41.6"
           Id="Package\Employee\Terminated"
           TopLeft="236.428571931866,676.411764379448" />
         <NodeLayout
+          Size="144,41.6"
+          Id="Package\Employee\LoadFromCSV"
+          TopLeft="342.14285787119,3.5527136788005E-15" />
+        <NodeLayout
           Size="148.8,41.6"
           Id="Package\Employee\NotTerminated"
           TopLeft="498.571429632756,679.482352673057" />
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\Employee\DateOfTerminationIsNull"
+          TopLeft="333.809524520117,990.250980212071" />
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\Employee\FindTerminateReasonID"
+          TopLeft="330.000000702483,527.435293787862" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Employee\FindEmployeeStatusID"
+          TopLeft="330.71428641829,452.094117314593" />
+        <NodeLayout
+          Size="112,41.6"
+          Id="Package\Employee\AllData"
+          TopLeft="369.523810310429,1130.6980390289" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Employee\SalaryDataConversion"
+          TopLeft="340.714286439577,840.505882013101" />
         <EdgeLayout
           Id="Package\Employee.Paths[yes]"
           TopLeft="418.257143597639,646.529411432909">
@@ -5008,6 +5086,90 @@ where [refTable].[LastName] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-66.1558678641368,19.9411764732694,16.4831640625,9.6171875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Union All Output 11]"
+          TopLeft="429.842857897799,795.329411432909">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.1764705801917"
+              Start="0,0"
+              End="0,37.6764705801917">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.6764705801917" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Union All Output 1]"
+          TopLeft="426.119048385647,1172.2980390289">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.1294114101186"
+              Start="0,0"
+              End="0,26.6294114101186">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6294114101186" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[NotNull]"
+          TopLeft="399.94285785345,1031.85098021207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87.5333336207131,31.0470587598518"
+              Start="0,0"
+              End="-87.5333336207131,23.5470587598518">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.57089073051952" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.57089073051952"
+                    Point2="0,12.5708907305195"
+                    Point3="-4,12.5708907305195" />
+                  <mssgle:LineSegment
+                    End="-83.5333336207131,12.5708907305195" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83.5333336207131,12.5708907305195"
+                    Point2="-87.5333336207131,12.5708907305195"
+                    Point3="-87.5333336207131,16.5708907305195" />
+                  <mssgle:LineSegment
+                    End="-87.5333336207131,23.5470587598518" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-60.1887957166065,17.5708907305195,32.8442578125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5047,162 +5209,80 @@ where [refTable].[LastName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\Employee\Union All"
-          TopLeft="368.57142935602,753.729411432909" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Derived Column Output]"
-          TopLeft="302.428571931866,718.011764379448">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="107.476190757488,35.7176470534612"
-              Start="0,0"
-              End="107.476190757488,28.2176470534612">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.1486068079704" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.1486068079704"
-                    Point2="0,21.1486068079704"
-                    Point3="4,21.1486068079704" />
-                  <mssgle:LineSegment
-                    End="103.476190757488,21.1486068079704" />
-                  <mssgle:CubicBezierSegment
-                    Point1="103.476190757488,21.1486068079704"
-                    Point2="107.476190757488,21.1486068079704"
-                    Point3="107.476190757488,25.1486068079704" />
-                  <mssgle:LineSegment
-                    End="107.476190757488,28.2176470534612" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Employee.Paths[Derived Column Output1]"
-          TopLeft="572.971429632756,721.082352673057">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-125.733333610069,32.6470587598513"
-              Start="0,0"
-              End="-125.733333610069,25.1470587598513">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.330495318333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.330495318333"
-                    Point2="0,19.330495318333"
-                    Point3="-4,19.330495318333" />
-                  <mssgle:LineSegment
-                    End="-121.733333610069,19.330495318333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-121.733333610069,19.330495318333"
-                    Point2="-125.733333610069,19.330495318333"
-                    Point3="-125.733333610069,23.330495318333" />
-                  <mssgle:LineSegment
-                    End="-125.733333610069,25.1470587598513" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\Employee\SalaryDataConversion"
-          TopLeft="340.714286439577,840.505882013101" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Union All Output 1]"
-          TopLeft="429.842857897799,795.329411432909">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.1764705801917"
-              Start="0,0"
-              End="0,37.6764705801917">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.6764705801917" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152,43.2"
-          Id="Package\Employee\InsertEmployee"
-          TopLeft="350.714286460864,1206.42745043902" />
-        <NodeLayout
-          Size="235.2,41.6"
-          Id="Package\Employee\EmployeeNumberDataConversion"
-          TopLeft="298.571429207009,66.5294117063903" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Flat File Source Output]"
-          TopLeft="415.157143539099,41.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,24.9294117063903"
-              Start="0,0"
-              End="0,17.4294117063903">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.4294117063903" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Employee\FindEmployeeID"
-          TopLeft="343.571429302802,136.882352821194" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Data Conversion Output]"
-          TopLeft="418.671429254905,108.12941170639">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.7529411148036"
-              Start="0,0"
-              End="0,21.2529411148036">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.2529411148036" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Employee.Paths[Lookup Match Output5]"
+          TopLeft="424.357143560387,493.694117314593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.7411764732693"
+              Start="0,0"
+              End="0,26.2411764732693">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.2411764732693" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.31590073663466,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Lookup Match Output4]"
+          TopLeft="423.314286428933,416.305882024497">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.7882352900959"
+              Start="0,0"
+              End="0,28.2882352900959">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.2882352900959" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.33943014504794,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Lookup Match Output3]"
+          TopLeft="424.428572166027,332.188235039406">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.5176469850911"
+              Start="0,0"
+              End="0,35.0176469850911">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.0176469850911" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.7041359925456,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Lookup Match Output2]"
           TopLeft="423.042857855224,178.482352821194">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5225,162 +5305,54 @@ where [refTable].[LastName] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194.4,41.6"
-          Id="Package\Employee\DateOfTerminationIsNull"
-          TopLeft="333.809524520117,990.250980212071" />
-        <NodeLayout
-          Size="227.2,41.6"
-          Id="Package\Employee\ConvertDateOfTerminationType"
-          TopLeft="198.809524232737,1062.89803897192" />
         <EdgeLayout
-          Id="Package\Employee.Paths[NotNull]"
-          TopLeft="399.94285785345,1031.85098021207">
+          Id="Package\Employee.Paths[Lookup Match Output1]"
+          TopLeft="425.128572150061,252.658823344411">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-87.5333336207131,31.0470587598518"
+              EndConnector="0,37.9294116949953"
               Start="0,0"
-              End="-87.5333336207131,23.5470587598518">
+              End="0,30.4294116949953">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.57089073051952" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.57089073051952"
-                    Point2="0,12.5708907305195"
-                    Point3="-4,12.5708907305195" />
-                  <mssgle:LineSegment
-                    End="-83.5333336207131,12.5708907305195" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-83.5333336207131,12.5708907305195"
-                    Point2="-87.5333336207131,12.5708907305195"
-                    Point3="-87.5333336207131,16.5708907305195" />
-                  <mssgle:LineSegment
-                    End="-87.5333336207131,23.5470587598518" />
+                    End="0,30.4294116949953" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-60.1887957166065,17.5708907305195,32.8442578125,9.7490234375"
+              BoundingBox="-48.19138671875,9.41001834749765,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="112,41.6"
-          Id="Package\Employee\AllData"
-          TopLeft="369.523810310429,1130.6980390289" />
         <EdgeLayout
-          Id="Package\Employee.Paths[Data Conversion Output1]"
-          TopLeft="312.409524232737,1104.49803897192">
+          Id="Package\Employee.Paths[Lookup Match Output]"
+          TopLeft="421.928572150061,569.035293787861">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.7809527443587,26.2000000569753"
+              EndConnector="0,35.8941176450479"
               Start="0,0"
-              End="95.7809527443587,18.7000000569753">
+              End="0,28.3941176450479">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.4985915829996" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.4985915829996"
-                    Point2="0,15.4985915829996"
-                    Point3="4,15.4985915829996" />
-                  <mssgle:LineSegment
-                    End="91.7809527443587,15.4985915829996" />
-                  <mssgle:CubicBezierSegment
-                    Point1="91.7809527443587,15.4985915829996"
-                    Point2="95.7809527443587,15.4985915829996"
-                    Point3="95.7809527443587,19.4985915829996" />
-                  <mssgle:LineSegment
-                    End="95.7809527443587,18.7000000569753" />
+                    End="0,28.3941176450479" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,8.39237132252396,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Employee.Paths[Union All Output 11]"
-          TopLeft="426.119048385647,1172.2980390289">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.1294114101186"
-              Start="0,0"
-              End="0,26.6294114101186">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.6294114101186" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="189.6,41.6"
-          Id="Package\Employee\StripDateOfTermination"
-          TopLeft="341.428572155383,915.635293913207" />
-        <EdgeLayout
-          Id="Package\Employee.Paths[Data Conversion Output2]"
-          TopLeft="433.67142929748,882.105882013101">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.5294119001067"
-              Start="0,0"
-              End="0,26.0294119001067">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.0294119001067" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Employee.Paths[Derived Column Output2]"
-          TopLeft="433.61904833775,957.235293913207">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.0156862988638"
-              Start="0,0"
-              End="0,25.5156862988638">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5156862988638" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Employee\ReplaceWithNULL"
-          TopLeft="453.095239059759,1060.58039197544" />
         <EdgeLayout
           Id="Package\Employee.Paths[IsNull]"
           TopLeft="462.076191186783,1031.85098021207">
@@ -5418,7 +5390,127 @@ where [refTable].[LastName] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Employee.Paths[Flat File Source Output]"
+          TopLeft="415.157143539099,41.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.9294117063903"
+              Start="0,0"
+              End="0,17.4294117063903">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4294117063903" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Employee.Paths[Derived Column Output3]"
+          TopLeft="572.971429632756,721.082352673057">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.733333610069,32.6470587598513"
+              Start="0,0"
+              End="-125.733333610069,25.1470587598513">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.330495318333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.330495318333"
+                    Point2="0,19.330495318333"
+                    Point3="-4,19.330495318333" />
+                  <mssgle:LineSegment
+                    End="-121.733333610069,19.330495318333" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.733333610069,19.330495318333"
+                    Point2="-125.733333610069,19.330495318333"
+                    Point3="-125.733333610069,23.330495318333" />
+                  <mssgle:LineSegment
+                    End="-125.733333610069,25.1470587598513" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Derived Column Output2]"
+          TopLeft="302.428571931866,718.011764379448">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.476190757488,35.7176470534612"
+              Start="0,0"
+              End="107.476190757488,28.2176470534612">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1486068079704" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.1486068079704"
+                    Point2="0,21.1486068079704"
+                    Point3="4,21.1486068079704" />
+                  <mssgle:LineSegment
+                    End="103.476190757488,21.1486068079704" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.476190757488,21.1486068079704"
+                    Point2="107.476190757488,21.1486068079704"
+                    Point3="107.476190757488,25.1486068079704" />
+                  <mssgle:LineSegment
+                    End="107.476190757488,28.2176470534612" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Derived Column Output1]"
+          TopLeft="433.61904833775,957.235293913207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.0156862988638"
+              Start="0,0"
+              End="0,25.5156862988638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5156862988638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Derived Column Output]"
           TopLeft="533.895239059759,1102.18039197544">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5448,127 +5540,98 @@ where [refTable].[LastName] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Data Conversion Output2]"
+          TopLeft="418.671429254905,108.12941170639">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.7529411148036"
+              Start="0,0"
+              End="0,21.2529411148036">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.2529411148036" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Data Conversion Output1]"
+          TopLeft="312.409524232737,1104.49803897192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.7809527443587,26.2000000569753"
+              Start="0,0"
+              End="95.7809527443587,18.7000000569753">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.4985915829996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.4985915829996"
+                    Point2="0,15.4985915829996"
+                    Point3="4,15.4985915829996" />
+                  <mssgle:LineSegment
+                    End="91.7809527443587,15.4985915829996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.7809527443587,15.4985915829996"
+                    Point2="95.7809527443587,15.4985915829996"
+                    Point3="95.7809527443587,19.4985915829996" />
+                  <mssgle:LineSegment
+                    End="95.7809527443587,18.7000000569753" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Employee.Paths[Data Conversion Output]"
+          TopLeft="433.67142929748,882.105882013101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.5294119001067"
+              Start="0,0"
+              End="0,26.0294119001067">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0294119001067" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Employee\FindRecruitmentSourceID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[RecruitmentSource]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Employee\FindPositionID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Position]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Employee\FindDepartmentID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Department]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Employee\FindEmployeeStatusID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[EmploymentStatus]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Employee\FindTerminateReasonID">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[TerminateReason]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Employee\InsertEmployee">
     <Properties>
@@ -5583,7 +5646,265 @@ where [refTable].[LastName] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Employee\FindPositionID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Position]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Employee\FindDepartmentID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Department]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Employee\FindRecruitmentSourceID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[RecruitmentSource]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Employee\FindEmployeeID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[EmployeeInfo]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Employee\FindTerminateReasonID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[TerminateReason]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Employee\FindEmployeeStatusID">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[EmploymentStatus]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Manager">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Manager\SplitLastNameAndFirstName"
+          TopLeft="296.428566524873,116.596636649919" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Manager\LoadFromCSV"
+          TopLeft="323.571423749839,44.4285707665342" />
+        <EdgeLayout
+          Id="Package\Manager.Paths[Flat File Source Output]"
+          TopLeft="398.799995137356,86.0285707665342">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.5680658833844"
+              Start="0,0"
+              End="0,23.0680658833844">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0680658833844" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Manager\FindManagerID"
+          TopLeft="325.00000069184,188.882352775614" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Manager\UpdateManagerID"
+          TopLeft="317.142857817971,339.529411467095" />
+        <EdgeLayout
+          Id="Package\Manager.Paths[Derived Column Output]"
+          TopLeft="401.114283608356,158.196636649919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6857161256947"
+              Start="0,0"
+              End="0,23.1857161256947">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1857161256947" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Manager\FindEmployeeID"
+          TopLeft="327.142857839258,256.058823424176" />
+        <EdgeLayout
+          Id="Package\Manager.Paths[Lookup Match Output]"
+          TopLeft="402.471429265549,230.482352775614">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.5764706485619"
+              Start="0,0"
+              End="0,18.0764706485619">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0764706485619" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,3.23354782428093,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Manager.Paths[Lookup Match Output1]"
+          TopLeft="401.942857828615,297.658823424176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.8705880429197"
+              Start="0,0"
+              End="0,34.3705880429197">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.3705880429197" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.3806065214598,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Manager\FindManagerID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -5605,100 +5926,8 @@ where [refTable].[LastName] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Manager">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\Manager\LoadFromCSV"
-          TopLeft="323.571423749839,44.4285707665342" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Manager\Derived Column"
-          TopLeft="324.999995157123,135.714283691985" />
-        <EdgeLayout
-          Id="Package\Manager.Paths[Flat File Source Output]"
-          TopLeft="398.485709453481,86.0285707665342">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49.6857129254512"
-              Start="0,0"
-              End="0,42.1857129254512">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.1857129254512" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="112.8,41.6"
-          Id="Package\Manager\Lookup"
-          TopLeft="337.857137822679,202.857139834336" />
-        <EdgeLayout
-          Id="Package\Manager.Paths[Derived Column Output]"
-          TopLeft="397.828566489901,177.314283691985">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25.5428561423506"
-              Start="0,0"
-              End="0,18.0428561423506">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.0428561423506" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="121.6,41.6"
-          Id="Package\Manager\Lookup 1"
-          TopLeft="337.142852119037,279.571424686483" />
-        <EdgeLayout
-          Id="Package\Manager.Paths[Lookup Match Output]"
-          TopLeft="396.099994970858,244.457139834336">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35.1142848521471"
-              Start="0,0"
-              End="0,27.6142848521471">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.6142848521471" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,8.00245492607357,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Manager\Lookup">
+    design-time-name="Package\Manager\FindEmployeeID">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
