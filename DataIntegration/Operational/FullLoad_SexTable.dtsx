@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-OLK7CR6"
   DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
-  DTS:DTSID="{D34DDC20-E5CF-48C3-B371-C47EB745412E}"
+  DTS:DTSID="{B7E51178-E729-485E-A7B9-31836024D6EF}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5223.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="FullLoad_SexTable"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{67DEC409-DB9F-4AB6-BD4F-6E2C04D18D56}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{82520C16-3637-480B-9AA0-8BC3A2EDF758}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

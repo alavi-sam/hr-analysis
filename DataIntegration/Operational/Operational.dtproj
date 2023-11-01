@@ -26,23 +26,24 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-OLK7CR6</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9XErX1IX50qIHan+w9HaEgAAAAACAAAAAAAQZgAAAAEAACAAAAC/jfyFNXutuG2P4mOv5E4E7orMfO2yv1z3iyRPasyUvAAAAAAOgAAAAAIAACAAAAAbNp6DK6Y7CKYw7AhAN+jWbTfWe3QkjdNaodumm0YB15AAAAD/kXqX2WkofQ5g4WzeJxZJRMRGEN4Z8W1+gThp3RBhLY/vGIxK9CRHGk5SHArIu283B80U5/ll/eYFD3AqaBhqrgv1uzKFl9u9+gpw1bC6MxVcnXF/Ix2uv+QWhtZKTqs63UF0kpreGp3FXfNkUUT9L9b9v6kFQmOUGzu0UwK/lOluDBEycVJcgQTxwUxnMhtAAAAA8vTIyhgQcbK7BzXQORFBfJcFazqJgr9umVVc1CB7GUTs1VwtCiCX2ssoL6Gm3NmLu3Gw9NxwQF/gCPCWh4tkwQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9XErX1IX50qIHan+w9HaEgAAAAACAAAAAAAQZgAAAAEAACAAAAAcHZTATsjw84JkuQMyBn30ohO5wjswuamPk8TTZEKWggAAAAAOgAAAAAIAACAAAAB1l4+xtsWgiCJb9abMFjOA2ytXFi1Gpeedh6lG87lkKJAAAAB3tEyE158jMGIcsA2TTe1IOhWRy5VidzvYnBjtdnS1anT2mfwN7zKV3Bqnvw8r4//NZZfRdG3yWThr8wnvKATcQDTMsoggv8//ShaUAqvmdN2Alioz9dLAHWc0VfyfdffLD4lsOu1zhm97Bedro42TL4uLqT2PJfOjevJ/C7kTiVmSlvl66LwX8vNAevfTiM5AAAAAhIebxlWNCpsHx9z/BijQd0NJJTJyZGVxqb3f0UeDAyr2cJRzm9WCK31uYgfx5H8Q2K4ItR2kTXZWC+PMdV632Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="RaceTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="MaritalStatusTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="SexTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="CitizenDescriptionTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="EmployeeInfoTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="DepartmentTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="EmploymentStatus.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="TerminateReasonTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="EmployeeTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="PositionTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="RecruitmentSourceTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="PerformanceTable.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="EmployeePerformance.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_CitizenDescriptionTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_DepartmentTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_EmployeeInfoTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_EmployeeTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_EmploymentStatus.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_MaritalStatusTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_EmployeePerformance.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_PerformanceTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_PositionTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_RaceTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_RecruitmentSourceTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_SexTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_TerminateReasonTable.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FullLoad_AllTables.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="LocalHost.HR.conmgr" />
@@ -76,7 +77,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=HR;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Operational-{C2BEE1E8-BFC7-4434-992F-ED10878E8109}LocalHost.HR;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=HR-Test2;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Operational-{C2BEE1E8-BFC7-4434-992F-ED10878E8109}LocalHost.HR;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -136,7 +137,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">HR</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">HR-Test2</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -397,16 +398,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="RaceTable.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_CitizenDescriptionTable.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{682B2E22-A992-4F89-B81B-0867AFC1ABA1}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{D340C8CF-8A12-4BB3-81A8-E7F6182782C9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_CitizenDescriptionTable</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{767ECF53-E32B-4693-8D8D-A32EA9B9E6FF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B6852E56-E2EC-442D-9D55-9D2577C5B22F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -414,16 +415,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="MaritalStatusTable.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_DepartmentTable.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{4BA80361-F5F3-4899-8D5E-2C957E50FA4E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">MaritalStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{294551B1-C9CD-4154-A3DF-791D40F60477}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_DepartmentTable</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">7</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AA4E63C0-109D-45C1-86DE-F0A319883F2D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D688C425-99F7-4F00-82C6-098251BA10AD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -431,16 +432,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="SexTable.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_EmployeeInfoTable.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D34DDC20-E5CF-48C3-B371-C47EB745412E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{CE5AD5BD-CA25-4D6F-81A8-81866FBEC214}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_EmployeeInfoTable</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">24</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{67DEC409-DB9F-4AB6-BD4F-6E2C04D18D56}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E32A212E-7908-44C1-9EEA-FE2A4C1A409A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -448,16 +449,84 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="CitizenDescriptionTable.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_EmployeeTable.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{683EDF5D-2303-416F-A410-96D5D99C8F5D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{F8C107E0-7470-4981-B94A-EC076185A5D0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_EmployeeTable</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">60</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2A534DBB-B190-48AE-953F-5A1A11E72511}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_EmploymentStatus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{08F75A5F-7602-4FB6-AA71-5FDFB01CC5CF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_EmploymentStatus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{707B4923-11D2-4664-A75C-33A8D7F57781}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_MaritalStatusTable.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{5AA14316-2F95-41DA-A784-D229168D4085}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_MaritalStatusTable</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{16B31908-A5C7-42A4-A6A2-D6C0EF83AF6F}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_EmployeePerformance.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{28E00D54-64B4-4817-9865-5277297C788B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6A2BC890-D812-4DFB-8695-6A63D3B76220}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_PerformanceTable.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A4FE77E8-F661-4B4F-9326-59DBAD2CC80E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_PerformanceTable</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E2D194F3-7220-4615-A97A-3520B158CC13}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{585F3C54-E41E-4A60-8A78-CB657EBC4053}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -465,16 +534,33 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="EmployeeInfoTable.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_PositionTable.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{08473478-3925-4967-A120-9C87867CC18A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{9E61B21B-E127-4267-AD12-7F9401491E17}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_PositionTable</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{95740557-20D7-4D1F-8A2D-AE283D9ADCF8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_RaceTable.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D558E9C8-97BA-4508-AE1A-12CDEC861D05}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_RaceTable</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2DE177F6-1A5E-47F0-BB22-823BFD88FAB3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{14623DE8-49D8-4663-8501-772EBE5DC8AF}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -482,135 +568,67 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="DepartmentTable.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_RecruitmentSourceTable.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{94235E6B-ECAE-4EC2-B53C-67754BD3FB4D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{4A8C2A71-BCF5-4205-B844-A28B549B6634}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_RecruitmentSourceTable</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{33FEE756-709A-44B9-963C-AE9F4D784BEF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_SexTable.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{B7E51178-E729-485E-A7B9-31836024D6EF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_SexTable</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">25</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{82520C16-3637-480B-9AA0-8BC3A2EDF758}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_TerminateReasonTable.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{211D1B4A-95E0-41CF-B9C4-71F67B03CCB5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FullLoad_TerminateReasonTable</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{25595E6D-56F8-486C-A177-60A604CEFC49}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FullLoad_AllTables.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{4E4F0562-89EF-401D-8BA7-8D0E0B18DD46}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{88BB1C9C-03D8-4BA5-9CCA-D7200590A9D0}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="EmploymentStatus.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{18BF8A18-71B8-438C-AF40-EEB70D6BCD63}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7837A785-026B-4801-9498-0CE3C0C1C19D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="TerminateReasonTable.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C96B115E-4093-4402-AE66-BADD74009018}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{3B2DE2EE-2CB1-446E-A301-F8DCAD678C9D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="EmployeeTable.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{31002369-B1BE-41A8-B508-46BD2796AF17}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">59</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BAAC26E7-E0BA-43EA-B8B4-594D73F83F2C}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="PositionTable.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{4B1795CC-0972-408F-8FDB-274D924B3145}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{ED900E7A-924A-48AB-9F8E-8C35C4045CF4}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="RecruitmentSourceTable.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D41B9317-FD65-48C6-84C7-E3095859F219}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{270DD6EF-4B6A-41F1-BAA2-2D7183ED787D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="PerformanceTable.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{956FFA2C-09BE-4C7E-94BC-7E81DDCC8972}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6582EB9B-6394-457B-AC51-6909C799F3AB}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="EmployeePerformance.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{28E00D54-64B4-4817-9865-5277297C788B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1075E3A9-F512-4FB8-AF14-BEB88B315DC0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{11078CBE-57CA-4C7D-BAC8-4B6B171BC745}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=.;Initial Catalog=HR;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Operational-{C2BEE1E8-BFC7-4434-992F-ED10878E8109}LocalHost.HR;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=.;Initial Catalog=HR;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Operational-{C2BEE1E8-BFC7-4434-992F-ED10878E8109}LocalHost.HR;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

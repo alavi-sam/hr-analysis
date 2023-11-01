@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-OLK7CR6"
   DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
-  DTS:DTSID="{08473478-3925-4967-A120-9C87867CC18A}"
+  DTS:DTSID="{CE5AD5BD-CA25-4D6F-81A8-81866FBEC214}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5223.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="FullLoad_EmployeeInfoTable"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{2DE177F6-1A5E-47F0-BB22-823BFD88FAB3}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{E32A212E-7908-44C1-9EEA-FE2A4C1A409A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

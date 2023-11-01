@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="10/31/2023 11:15:13 PM"
+  DTS:CreationDate="10/31/2023 5:47:37 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-OLK7CR6"
   DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
-  DTS:DTSID="{D41B9317-FD65-48C6-84C7-E3095859F219}"
+  DTS:DTSID="{D558E9C8-97BA-4508-AE1A-12CDEC861D05}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5223.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="FullLoad_RaceTable"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{270DD6EF-4B6A-41F1-BAA2-2D7183ED787D}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{14623DE8-49D8-4663-8501-772EBE5DC8AF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\RecruitmentSource"
+      DTS:refId="Package\Race"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{CB3DBD52-6B72-40C7-91C2-BE4C9B6FC0E7}"
+      DTS:DTSID="{DB6E8F09-5199-489D-9A96-285B57B34BF8}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="RecruitmentSource"
+      DTS:ObjectName="Race"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,7 @@
           version="1">
           <components>
             <component
-              refId="Package\RecruitmentSource\DeleteDuplicateValues"
+              refId="Package\Race\DeleteDuplicateValues"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -51,16 +51,16 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\RecruitmentSource\DeleteDuplicateValues.Inputs[Sort Input]"
+                  refId="Package\Race\DeleteDuplicateValues.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\RecruitmentSource\DeleteDuplicateValues.Inputs[Sort Input].Columns[RecruitmentSource]"
+                      refId="Package\Race\DeleteDuplicateValues.Inputs[Sort Input].Columns[RaceDesc]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="RecruitmentSource"
-                      lineageId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].Columns[RecruitmentSource]">
+                      cachedName="RaceDesc"
+                      lineageId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -78,24 +78,24 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\RecruitmentSource\DeleteDuplicateValues.Outputs[Sort Output]"
+                  refId="Package\Race\DeleteDuplicateValues.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\RecruitmentSource\DeleteDuplicateValues.Outputs[Sort Output].Columns[RecruitmentSource]"
+                      refId="Package\Race\DeleteDuplicateValues.Outputs[Sort Output].Columns[RaceDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\RecruitmentSource\DeleteDuplicateValues.Outputs[Sort Output].Columns[RecruitmentSource]"
-                      name="RecruitmentSource"
+                      lineageId="Package\Race\DeleteDuplicateValues.Outputs[Sort Output].Columns[RaceDesc]"
+                      name="RaceDesc"
                       sortKeyPosition="1">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].Columns[RecruitmentSource]}</property>
+                          name="SortColumnId">#{Package\Race\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -104,11 +104,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\RecruitmentSource\InsertRecruitmentSource"
+              refId="Package\Race\InsertRace"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="InsertRecruitmentSource"
+              name="InsertRace"
               usesDispositions="true"
               version="4">
               <properties>
@@ -119,7 +119,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[RecruitmentSource]</property>
+                  name="OpenRowset">[dbo].[Race]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -161,7 +161,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\RecruitmentSource\InsertRecruitmentSource.Connections[OleDbConnection]"
+                  refId="Package\Race\InsertRace.Connections[OleDbConnection]"
                   connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
                   description="The OLE DB runtime connection used to access the database."
@@ -169,55 +169,55 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input]"
+                  refId="Package\Race\InsertRace.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input].Columns[RecruitmentSource]"
+                      refId="Package\Race\InsertRace.Inputs[OLE DB Destination Input].Columns[RaceDesc]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="RecruitmentSource"
+                      cachedName="RaceDesc"
                       cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
-                      lineageId="Package\RecruitmentSource\DeleteDuplicateValues.Outputs[Sort Output].Columns[RecruitmentSource]" />
+                      externalMetadataColumnId="Package\Race\InsertRace.Inputs[OLE DB Destination Input].ExternalColumns[RaceDescription]"
+                      lineageId="Package\Race\DeleteDuplicateValues.Outputs[Sort Output].Columns[RaceDesc]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      refId="Package\Race\InsertRace.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
                       dataType="ui1"
                       name="ID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      refId="Package\Race\InsertRace.Inputs[OLE DB Destination Input].ExternalColumns[RaceDescription]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="Source" />
+                      name="RaceDescription" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\RecruitmentSource\InsertRecruitmentSource.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Race\InsertRace.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Race\InsertRace.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\RecruitmentSource\InsertRecruitmentSource.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Race\InsertRace.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\RecruitmentSource\InsertRecruitmentSource.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Race\InsertRace.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\RecruitmentSource\InsertRecruitmentSource.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Race\InsertRace.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\RecruitmentSource\InsertRecruitmentSource.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Race\InsertRace.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -226,7 +226,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\RecruitmentSource\LoadFromCSV"
+              refId="Package\Race\LoadFromCSV"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -246,26 +246,26 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\RecruitmentSource\LoadFromCSV.Connections[FlatFileConnection]"
+                  refId="Package\Race\LoadFromCSV.Connections[FlatFileConnection]"
                   connectionManagerID="{440D46F4-5351-4CD9-B497-04EE9516068D}:external"
                   connectionManagerRefId="Project.ConnectionManagers[HRDatasetCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output]"
+                  refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].Columns[RecruitmentSource]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      externalMetadataColumnId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
                       length="50"
-                      lineageId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].Columns[RecruitmentSource]"
-                      name="RecruitmentSource"
+                      lineageId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].Columns[RaceDesc]"
+                      name="RaceDesc"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -282,217 +282,217 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Employee_Name" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MarriedID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MaritalStatusID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="GenderID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpStatusID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DeptID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PerfScoreID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="FromDiversityJobFairID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Salary" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Termd" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PositionID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Position" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Zip" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DOB" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Sex" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MaritalDesc" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="CitizenDesc" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="HispanicLatino" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RaceDesc" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DateofHire" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DateofTermination" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="TermReason" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmploymentStatus" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Department" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ManagerName" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ManagerID" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RecruitmentSource" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PerformanceScore" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EngagementSurvey" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpSatisfaction" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="SpecialProjectsCount" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="LastPerformanceReview_Date" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DaysLateLast30" />
                     <externalMetadataColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -500,27 +500,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output]"
+                  refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Race\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -531,15 +531,15 @@
           </components>
           <paths>
             <path
-              refId="Package\RecruitmentSource.Paths[Flat File Source Output]"
-              endId="Package\RecruitmentSource\DeleteDuplicateValues.Inputs[Sort Input]"
+              refId="Package\Race.Paths[Flat File Source Output]"
+              endId="Package\Race\DeleteDuplicateValues.Inputs[Sort Input]"
               name="Flat File Source Output"
-              startId="Package\RecruitmentSource\LoadFromCSV.Outputs[Flat File Source Output]" />
+              startId="Package\Race\LoadFromCSV.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\RecruitmentSource.Paths[Sort Output]"
-              endId="Package\RecruitmentSource\InsertRecruitmentSource.Inputs[OLE DB Destination Input]"
+              refId="Package\Race.Paths[Sort Output]"
+              endId="Package\Race\InsertRace.Inputs[OLE DB Destination Input]"
               name="Sort Output"
-              startId="Package\RecruitmentSource\DeleteDuplicateValues.Outputs[Sort Output]" />
+              startId="Package\Race\DeleteDuplicateValues.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -558,39 +558,43 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="167.2,41.6"
-          Id="Package\RecruitmentSource"
-          TopLeft="367.857143640214,126.176470477637" />
+          Size="100.8,41.6"
+          Id="Package\Race"
+          TopLeft="262.14285770089,75.705882286582" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\RecruitmentSource">
+    design-time-name="Package\Race">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="144,41.6"
-          Id="Package\RecruitmentSource\LoadFromCSV"
-          TopLeft="392.857143693433,91.7647058019176" />
+          Id="Package\Race\LoadFromCSV"
+          TopLeft="346.428572166027,25.2352940955274" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Race\InsertRace"
+          TopLeft="362.142857913764,191.176470420662" />
         <NodeLayout
           Size="183.2,41.6"
-          Id="Package\RecruitmentSource\DeleteDuplicateValues"
-          TopLeft="371.428572219245,192.705882184027" />
+          Id="Package\Race\DeleteDuplicateValues"
+          TopLeft="340.000000723771,113.941176370714" />
         <EdgeLayout
-          Id="Package\RecruitmentSource.Paths[Flat File Source Output]"
-          TopLeft="463.942857956339,133.364705801918">
+          Id="Package\Race.Paths[Sort Output]"
+          TopLeft="429.071429318768,155.541176370714">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.3411763821094"
+              EndConnector="0,35.635294049948"
               Start="0,0"
-              End="0,51.8411763821094">
+              End="0,28.135294049948">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.8411763821094" />
+                    End="0,28.135294049948" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -599,24 +603,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="195.2,41.6"
-          Id="Package\RecruitmentSource\InsertRecruitmentSource"
-          TopLeft="360.714286482152,272.235293879022" />
         <EdgeLayout
-          Id="Package\RecruitmentSource.Paths[Sort Output]"
-          TopLeft="460.671429350698,234.305882184027">
+          Id="Package\Race.Paths[Flat File Source Output]"
+          TopLeft="418.414286444899,66.8352940955274">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.9294116949955"
+              EndConnector="0,47.105882275187"
               Start="0,0"
-              End="0,30.4294116949955">
+              End="0,39.605882275187">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.4294116949955" />
+                    End="0,39.605882275187" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -629,7 +629,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\RecruitmentSource\InsertRecruitmentSource">
+    design-time-name="Package\Race\InsertRace">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="10/31/2023 10:42:51 PM"
+  DTS:CreationDate="10/31/2023 6:38:02 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-OLK7CR6"
   DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
-  DTS:DTSID="{C96B115E-4093-4402-AE66-BADD74009018}"
+  DTS:DTSID="{5AA14316-2F95-41DA-A784-D229168D4085}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5223.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="FullLoad_MaritalStatusTable"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{3B2DE2EE-2CB1-446E-A301-F8DCAD678C9D}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{16B31908-A5C7-42A4-A6A2-D6C0EF83AF6F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\TerminateReason"
+      DTS:refId="Package\MaritalStatus"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{0F28BB22-791F-41DA-910A-8C0EA509B7AA}"
+      DTS:DTSID="{BC1254E1-747F-44F3-A473-288D1F47C3D3}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="TerminateReason"
+      DTS:ObjectName="MaritalStatus"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,7 @@
           version="1">
           <components>
             <component
-              refId="Package\TerminateReason\DeleteDuplicateValues"
+              refId="Package\MaritalStatus\DeleteDuplicateValues"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -51,16 +51,16 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\TerminateReason\DeleteDuplicateValues.Inputs[Sort Input]"
+                  refId="Package\MaritalStatus\DeleteDuplicateValues.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\TerminateReason\DeleteDuplicateValues.Inputs[Sort Input].Columns[TermReason]"
+                      refId="Package\MaritalStatus\DeleteDuplicateValues.Inputs[Sort Input].Columns[MaritalDesc]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="TermReason"
-                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]">
+                      cachedName="MaritalDesc"
+                      lineageId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -78,24 +78,24 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output]"
+                  refId="Package\MaritalStatus\DeleteDuplicateValues.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output].Columns[TermReason]"
+                      refId="Package\MaritalStatus\DeleteDuplicateValues.Outputs[Sort Output].Columns[MaritalDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output].Columns[TermReason]"
-                      name="TermReason"
+                      lineageId="Package\MaritalStatus\DeleteDuplicateValues.Outputs[Sort Output].Columns[MaritalDesc]"
+                      name="MaritalDesc"
                       sortKeyPosition="1">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]}</property>
+                          name="SortColumnId">#{Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -104,11 +104,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\TerminateReason\InsertTerminationReason"
+              refId="Package\MaritalStatus\InsertMaritalStatus"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="InsertTerminationReason"
+              name="InsertMaritalStatus"
               usesDispositions="true"
               version="4">
               <properties>
@@ -119,7 +119,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[TerminateReason]</property>
+                  name="OpenRowset">[dbo].[MaritalStatus]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -161,7 +161,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\TerminateReason\InsertTerminationReason.Connections[OleDbConnection]"
+                  refId="Package\MaritalStatus\InsertMaritalStatus.Connections[OleDbConnection]"
                   connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
                   description="The OLE DB runtime connection used to access the database."
@@ -169,55 +169,55 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input]"
+                  refId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].Columns[TermReason]"
+                      refId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input].Columns[MaritalDesc]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="TermReason"
+                      cachedName="MaritalDesc"
                       cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].ExternalColumns[Reason]"
-                      lineageId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output].Columns[TermReason]" />
+                      externalMetadataColumnId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input].ExternalColumns[MaritalDescription]"
+                      lineageId="Package\MaritalStatus\DeleteDuplicateValues.Outputs[Sort Output].Columns[MaritalDesc]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
-                      dataType="i2"
+                      refId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="ui1"
                       name="ID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].ExternalColumns[Reason]"
+                      refId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input].ExternalColumns[MaritalDescription]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="Reason" />
+                      name="MaritalDescription" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\MaritalStatus\InsertMaritalStatus.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\MaritalStatus\InsertMaritalStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\MaritalStatus\InsertMaritalStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\MaritalStatus\InsertMaritalStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\MaritalStatus\InsertMaritalStatus.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -226,7 +226,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\TerminateReason\LoadFromCSV"
+              refId="Package\MaritalStatus\LoadFromCSV"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -246,26 +246,26 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\TerminateReason\LoadFromCSV.Connections[FlatFileConnection]"
+                  refId="Package\MaritalStatus\LoadFromCSV.Connections[FlatFileConnection]"
                   connectionManagerID="{440D46F4-5351-4CD9-B497-04EE9516068D}:external"
                   connectionManagerRefId="Project.ConnectionManagers[HRDatasetCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output]"
+                  refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      externalMetadataColumnId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
                       length="50"
-                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]"
-                      name="TermReason"
+                      lineageId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].Columns[MaritalDesc]"
+                      name="MaritalDesc"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -282,217 +282,217 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Employee_Name" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MarriedID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MaritalStatusID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="GenderID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpStatusID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DeptID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PerfScoreID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="FromDiversityJobFairID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Salary" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Termd" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PositionID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Position" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Zip" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DOB" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Sex" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MaritalDesc" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="CitizenDesc" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="HispanicLatino" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RaceDesc" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DateofHire" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DateofTermination" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="TermReason" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmploymentStatus" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Department" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ManagerName" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ManagerID" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RecruitmentSource" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PerformanceScore" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EngagementSurvey" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpSatisfaction" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="SpecialProjectsCount" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="LastPerformanceReview_Date" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DaysLateLast30" />
                     <externalMetadataColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -500,27 +500,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output]"
+                  refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -531,15 +531,15 @@
           </components>
           <paths>
             <path
-              refId="Package\TerminateReason.Paths[Flat File Source Output]"
-              endId="Package\TerminateReason\DeleteDuplicateValues.Inputs[Sort Input]"
+              refId="Package\MaritalStatus.Paths[Flat File Source Output]"
+              endId="Package\MaritalStatus\DeleteDuplicateValues.Inputs[Sort Input]"
               name="Flat File Source Output"
-              startId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output]" />
+              startId="Package\MaritalStatus\LoadFromCSV.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\TerminateReason.Paths[Sort Output]"
-              endId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input]"
+              refId="Package\MaritalStatus.Paths[Sort Output]"
+              endId="Package\MaritalStatus\InsertMaritalStatus.Inputs[OLE DB Destination Input]"
               name="Sort Output"
-              startId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output]" />
+              startId="Package\MaritalStatus\DeleteDuplicateValues.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -558,39 +558,43 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="160.8,41.6"
-          Id="Package\TerminateReason"
-          TopLeft="368.57142935602,82.5882352217259" />
+          Size="139.2,41.6"
+          Id="Package\MaritalStatus"
+          TopLeft="350.500000734414,93.4411763935044" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\TerminateReason">
+    design-time-name="Package\MaritalStatus">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="144,41.6"
-          Id="Package\TerminateReason\LoadFromCSV"
-          TopLeft="402.85714371472,77.99999993163" />
+          Id="Package\MaritalStatus\LoadFromCSV"
+          TopLeft="334.285714997321,64.2352940613423" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\MaritalStatus\InsertMaritalStatus"
+          TopLeft="382.142857956339,248.52941154686" />
         <NodeLayout
           Size="183.2,41.6"
-          Id="Package\TerminateReason\DeleteDuplicateValues"
-          TopLeft="382.142857956339,177.411764550374" />
+          Id="Package\MaritalStatus\DeleteDuplicateValues"
+          TopLeft="379.285715093114,155.99999986326" />
         <EdgeLayout
-          Id="Package\TerminateReason.Paths[Flat File Source Output]"
-          TopLeft="474.300000835529,119.59999993163">
+          Id="Package\MaritalStatus.Paths[Sort Output]"
+          TopLeft="468.314286524727,197.59999986326">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57.8117646187441"
+              EndConnector="0,50.9294116836003"
               Start="0,0"
-              End="0,50.3117646187441">
+              End="0,43.4294116836003">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.3117646187441" />
+                    End="0,43.4294116836003" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -599,24 +603,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="196.8,41.6"
-          Id="Package\TerminateReason\InsertTerminationReason"
-          TopLeft="374.28571508247,269.176470352292" />
         <EdgeLayout
-          Id="Package\TerminateReason.Paths[Sort Output]"
-          TopLeft="473.214286519405,219.011764550374">
+          Id="Package\MaritalStatus.Paths[Flat File Source Output]"
+          TopLeft="406.285714997321,105.835294061342">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.1647058019176"
+              EndConnector="64.6000000957931,50.1647058019176"
               Start="0,0"
-              End="0,42.6647058019176">
+              End="64.6000000957931,42.6647058019176">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.6647058019176" />
+                    End="0,21.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0823529009588"
+                    Point2="0,25.0823529009588"
+                    Point3="4,25.0823529009588" />
+                  <mssgle:LineSegment
+                    End="60.6000000957931,25.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.6000000957931,25.0823529009588"
+                    Point2="64.6000000957931,25.0823529009588"
+                    Point3="64.6000000957931,29.0823529009588" />
+                  <mssgle:LineSegment
+                    End="64.6000000957931,42.6647058019176" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -629,7 +641,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\TerminateReason\InsertTerminationReason">
+    design-time-name="Package\MaritalStatus\InsertMaritalStatus">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

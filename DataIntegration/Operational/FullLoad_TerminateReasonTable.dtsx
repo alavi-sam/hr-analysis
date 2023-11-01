@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="11/2/2023 12:00:56 AM"
+  DTS:CreationDate="10/31/2023 10:42:51 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-OLK7CR6"
   DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
-  DTS:DTSID="{956FFA2C-09BE-4C7E-94BC-7E81DDCC8972}"
+  DTS:DTSID="{211D1B4A-95E0-41CF-B9C4-71F67B03CCB5}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5223.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="FullLoad_TerminateReasonTable"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{6582EB9B-6394-457B-AC51-6909C799F3AB}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{25595E6D-56F8-486C-A177-60A604CEFC49}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Performance"
+      DTS:refId="Package\TerminateReason"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{C1C904EB-7E2C-4E55-B04B-6B3C8EC1A553}"
+      DTS:DTSID="{0F28BB22-791F-41DA-910A-8C0EA509B7AA}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Performance"
+      DTS:ObjectName="TerminateReason"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Performance\DeleteDuplicateValues"
+              refId="Package\TerminateReason\DeleteDuplicateValues"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -51,16 +51,16 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\Performance\DeleteDuplicateValues.Inputs[Sort Input]"
+                  refId="Package\TerminateReason\DeleteDuplicateValues.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Performance\DeleteDuplicateValues.Inputs[Sort Input].Columns[PerformanceScore]"
+                      refId="Package\TerminateReason\DeleteDuplicateValues.Inputs[Sort Input].Columns[TermReason]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="PerformanceScore"
-                      lineageId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].Columns[PerformanceScore]">
+                      cachedName="TermReason"
+                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -78,24 +78,24 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Performance\DeleteDuplicateValues.Outputs[Sort Output]"
+                  refId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Performance\DeleteDuplicateValues.Outputs[Sort Output].Columns[PerformanceScore]"
+                      refId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output].Columns[TermReason]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Performance\DeleteDuplicateValues.Outputs[Sort Output].Columns[PerformanceScore]"
-                      name="PerformanceScore"
+                      lineageId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output].Columns[TermReason]"
+                      name="TermReason"
                       sortKeyPosition="1">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].Columns[PerformanceScore]}</property>
+                          name="SortColumnId">#{Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -104,11 +104,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Performance\InsertPerformanceScore"
+              refId="Package\TerminateReason\InsertTerminationReason"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="InsertPerformanceScore"
+              name="InsertTerminationReason"
               usesDispositions="true"
               version="4">
               <properties>
@@ -119,7 +119,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Perfomance]</property>
+                  name="OpenRowset">[dbo].[TerminateReason]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -161,7 +161,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Performance\InsertPerformanceScore.Connections[OleDbConnection]"
+                  refId="Package\TerminateReason\InsertTerminationReason.Connections[OleDbConnection]"
                   connectionManagerID="{C2BEE1E8-BFC7-4434-992F-ED10878E8109}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.HR]"
                   description="The OLE DB runtime connection used to access the database."
@@ -169,55 +169,55 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input]"
+                  refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input].Columns[PerformanceScore]"
+                      refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].Columns[TermReason]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="PerformanceScore"
+                      cachedName="TermReason"
                       cachedSortKeyPosition="1"
-                      externalMetadataColumnId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input].ExternalColumns[PerformanceDescription]"
-                      lineageId="Package\Performance\DeleteDuplicateValues.Outputs[Sort Output].Columns[PerformanceScore]" />
+                      externalMetadataColumnId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].ExternalColumns[Reason]"
+                      lineageId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output].Columns[TermReason]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
-                      dataType="ui1"
+                      refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i2"
                       name="ID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input].ExternalColumns[PerformanceDescription]"
+                      refId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input].ExternalColumns[Reason]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      name="PerformanceDescription" />
+                      name="Reason" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Performance\InsertPerformanceScore.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Performance\InsertPerformanceScore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Performance\InsertPerformanceScore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Performance\InsertPerformanceScore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Performance\InsertPerformanceScore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\TerminateReason\InsertTerminationReason.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -226,7 +226,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Performance\LoadFromCSV"
+              refId="Package\TerminateReason\LoadFromCSV"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -246,26 +246,26 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Performance\LoadFromCSV.Connections[FlatFileConnection]"
+                  refId="Package\TerminateReason\LoadFromCSV.Connections[FlatFileConnection]"
                   connectionManagerID="{440D46F4-5351-4CD9-B497-04EE9516068D}:external"
                   connectionManagerRefId="Project.ConnectionManagers[HRDatasetCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output]"
+                  refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].Columns[PerformanceScore]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      externalMetadataColumnId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
                       length="50"
-                      lineageId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].Columns[PerformanceScore]"
-                      name="PerformanceScore"
+                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].Columns[TermReason]"
+                      name="TermReason"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -282,217 +282,217 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Employee_Name]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Employee_Name" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MarriedID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MarriedID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatusID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MaritalStatusID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[GenderID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="GenderID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpStatusID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpStatusID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DeptID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DeptID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerfScoreID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PerfScoreID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[FromDiversityJobFairID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="FromDiversityJobFairID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Salary]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Salary" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Termd]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Termd" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PositionID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PositionID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Position]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Position" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Zip]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Zip" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DOB]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DOB" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Sex]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Sex" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[MaritalDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="MaritalDesc" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[CitizenDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="CitizenDesc" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[HispanicLatino]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="HispanicLatino" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RaceDesc]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RaceDesc" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofHire]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DateofHire" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DateofTermination]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DateofTermination" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[TermReason]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="TermReason" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmploymentStatus]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmploymentStatus" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Department" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerName]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ManagerName" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[ManagerID]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ManagerID" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[RecruitmentSource]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RecruitmentSource" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceScore]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="PerformanceScore" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EngagementSurvey]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EngagementSurvey" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[EmpSatisfaction]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="EmpSatisfaction" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[SpecialProjectsCount]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="SpecialProjectsCount" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[LastPerformanceReview_Date]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="LastPerformanceReview_Date" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[DaysLateLast30]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DaysLateLast30" />
                     <externalMetadataColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output].ExternalColumns[Absences]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -500,27 +500,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output]"
+                  refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -531,15 +531,15 @@
           </components>
           <paths>
             <path
-              refId="Package\Performance.Paths[Flat File Source Output]"
-              endId="Package\Performance\DeleteDuplicateValues.Inputs[Sort Input]"
+              refId="Package\TerminateReason.Paths[Flat File Source Output]"
+              endId="Package\TerminateReason\DeleteDuplicateValues.Inputs[Sort Input]"
               name="Flat File Source Output"
-              startId="Package\Performance\LoadFromCSV.Outputs[Flat File Source Output]" />
+              startId="Package\TerminateReason\LoadFromCSV.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\Performance.Paths[Sort Output]"
-              endId="Package\Performance\InsertPerformanceScore.Inputs[OLE DB Destination Input]"
+              refId="Package\TerminateReason.Paths[Sort Output]"
+              endId="Package\TerminateReason\InsertTerminationReason.Inputs[OLE DB Destination Input]"
               name="Sort Output"
-              startId="Package\Performance\DeleteDuplicateValues.Outputs[Sort Output]" />
+              startId="Package\TerminateReason\DeleteDuplicateValues.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -558,54 +558,28 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="137.6,41.6"
-          Id="Package\Performance"
-          TopLeft="345.500000723771,111.029411672205" />
+          Size="160.8,41.6"
+          Id="Package\TerminateReason"
+          TopLeft="368.57142935602,82.5882352217259" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Performance">
+    design-time-name="Package\TerminateReason">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="144,41.6"
-          Id="Package\Performance\LoadFromCSV"
-          TopLeft="358.571429334733,96.3529410920135" />
+          Id="Package\TerminateReason\LoadFromCSV"
+          TopLeft="402.85714371472,77.99999993163" />
         <NodeLayout
           Size="183.2,41.6"
-          Id="Package\Performance\DeleteDuplicateValues"
-          TopLeft="341.428572155383,178.176470432057" />
+          Id="Package\TerminateReason\DeleteDuplicateValues"
+          TopLeft="382.142857956339,177.411764550374" />
         <EdgeLayout
-          Id="Package\Performance.Paths[Flat File Source Output]"
-          TopLeft="431.800000745058,137.952941092014">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40.2235293400432"
-              Start="0,0"
-              End="0,32.7235293400432">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.7235293400432" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="192,41.6"
-          Id="Package\Performance\InsertPerformanceScore"
-          TopLeft="335.714286428934,277.588235050801" />
-        <EdgeLayout
-          Id="Package\Performance.Paths[Sort Output]"
-          TopLeft="432.371429292158,219.776470432057">
+          Id="Package\TerminateReason.Paths[Flat File Source Output]"
+          TopLeft="474.300000835529,119.59999993163">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -625,11 +599,37 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\TerminateReason\InsertTerminationReason"
+          TopLeft="374.28571508247,269.176470352292" />
+        <EdgeLayout
+          Id="Package\TerminateReason.Paths[Sort Output]"
+          TopLeft="473.214286519405,219.011764550374">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.1647058019176"
+              Start="0,0"
+              End="0,42.6647058019176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.6647058019176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Performance\InsertPerformanceScore">
+    design-time-name="Package\TerminateReason\InsertTerminationReason">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

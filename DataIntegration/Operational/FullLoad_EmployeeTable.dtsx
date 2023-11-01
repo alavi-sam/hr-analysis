@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-OLK7CR6"
   DTS:CreatorName="DESKTOP-OLK7CR6\ASUS"
-  DTS:DTSID="{31002369-B1BE-41A8-B508-46BD2796AF17}"
+  DTS:DTSID="{F8C107E0-7470-4981-B94A-EC076185A5D0}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5223.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="FullLoad_EmployeeTable"
   DTS:PackageType="5"
-  DTS:VersionBuild="59"
-  DTS:VersionGUID="{BAAC26E7-E0BA-43EA-B8B4-594D73F83F2C}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{2A534DBB-B190-48AE-953F-5A1A11E72511}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -3911,34 +3911,34 @@ where [refTable].[Reason] = ?</property>
               startId="Package\Employee\DateOfTerminationIsNull.Outputs[IsNull]" />
             <path
               refId="Package\Employee.Paths[Lookup Match Output5]"
-              endId="Package\Employee\FindTerminateReasonID.Inputs[Lookup Input]"
+              endId="Package\Employee\FindRecruitmentSourceID.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Employee\FindEmployeeStatusID.Outputs[Lookup Match Output]" />
+              startId="Package\Employee\FindEmployeeID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Employee.Paths[Lookup Match Output4]"
-              endId="Package\Employee\FindEmployeeStatusID.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Employee\FindDepartmentID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Employee.Paths[Lookup Match Output3]"
-              endId="Package\Employee\FindDepartmentID.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\Employee\FindPositionID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Employee.Paths[Lookup Match Output]"
-              endId="Package\Employee\IsTerminated.Inputs[Conditional Split Input]"
-              name="Lookup Match Output"
-              startId="Package\Employee\FindTerminateReasonID.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Employee.Paths[Lookup Match Output1]"
               endId="Package\Employee\FindPositionID.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Employee\FindRecruitmentSourceID.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Employee.Paths[Lookup Match Output2]"
-              endId="Package\Employee\FindRecruitmentSourceID.Inputs[Lookup Input]"
+              refId="Package\Employee.Paths[Lookup Match Output3]"
+              endId="Package\Employee\IsTerminated.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\Employee\FindEmployeeID.Outputs[Lookup Match Output]" />
+              startId="Package\Employee\FindTerminateReasonID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Employee.Paths[Lookup Match Output]"
+              endId="Package\Employee\FindTerminateReasonID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Employee\FindEmployeeStatusID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Employee.Paths[Lookup Match Output1]"
+              endId="Package\Employee\FindEmployeeStatusID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Employee\FindDepartmentID.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Employee.Paths[Lookup Match Output2]"
+              endId="Package\Employee\FindDepartmentID.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Employee\FindPositionID.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Employee.Paths[no]"
               endId="Package\Employee\NotTerminated.Inputs[Derived Column Input]"
@@ -3951,14 +3951,14 @@ where [refTable].[Reason] = ?</property>
               startId="Package\Employee\DateOfTerminationIsNull.Outputs[NotNull]" />
             <path
               refId="Package\Employee.Paths[Union All Output 11]"
-              endId="Package\Employee\SalaryDataConversion.Inputs[Data Conversion Input]"
-              name="Union All Output 1"
-              startId="Package\Employee\Union All.Outputs[Union All Output 1]" />
-            <path
-              refId="Package\Employee.Paths[Union All Output 1]"
               endId="Package\Employee\InsertEmployee.Inputs[OLE DB Destination Input]"
               name="Union All Output 1"
               startId="Package\Employee\AllData.Outputs[Union All Output 1]" />
+            <path
+              refId="Package\Employee.Paths[Union All Output 1]"
+              endId="Package\Employee\SalaryDataConversion.Inputs[Data Conversion Input]"
+              name="Union All Output 1"
+              startId="Package\Employee\Union All.Outputs[Union All Output 1]" />
             <path
               refId="Package\Employee.Paths[yes]"
               endId="Package\Employee\Terminated.Inputs[Derived Column Input]"
@@ -5090,7 +5090,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Union All Output 11]"
+          Id="Package\Employee.Paths[Union All Output 1]"
           TopLeft="429.842857897799,795.329411432909">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5114,7 +5114,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Union All Output 1]"
+          Id="Package\Employee.Paths[Union All Output 11]"
           TopLeft="426.119048385647,1172.2980390289">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5210,7 +5210,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output5]"
+          Id="Package\Employee.Paths[Lookup Match Output]"
           TopLeft="424.357143560387,493.694117314593">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5234,7 +5234,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output4]"
+          Id="Package\Employee.Paths[Lookup Match Output1]"
           TopLeft="423.314286428933,416.305882024497">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5258,7 +5258,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output3]"
+          Id="Package\Employee.Paths[Lookup Match Output2]"
           TopLeft="424.428572166027,332.188235039406">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5282,7 +5282,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output2]"
+          Id="Package\Employee.Paths[Lookup Match Output5]"
           TopLeft="423.042857855224,178.482352821194">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5306,7 +5306,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output1]"
+          Id="Package\Employee.Paths[Lookup Match Output4]"
           TopLeft="425.128572150061,252.658823344411">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5330,7 +5330,7 @@ WHERE EmployeeID = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Employee.Paths[Lookup Match Output]"
+          Id="Package\Employee.Paths[Lookup Match Output3]"
           TopLeft="421.928572150061,569.035293787861">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -5909,7 +5909,7 @@ WHERE EmployeeID = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5919,7 +5919,7 @@ WHERE EmployeeID = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5932,7 +5932,7 @@ WHERE EmployeeID = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5942,7 +5942,7 @@ WHERE EmployeeID = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
